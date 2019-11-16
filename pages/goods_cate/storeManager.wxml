@@ -2,7 +2,7 @@
 <form bindsubmit="formSubmit" report-submit='true'>
   <view class='personal-data'>
     <view class="wrapper">
-      <view class="title">管理我的店铺</view>
+      <view class="title">管理我的店铺 </view>
       <view class="wrapList">
         <view class="item acea-row row-between-wrapper {{item.uid === userInfo.uid ? 'on' : ''}}" wx:for="{{switchUserInfo}}" wx:key bindtap='switchAccounts' data-index='{{index}}'>
           <view class="picTxt acea-row row-between-wrapper">
