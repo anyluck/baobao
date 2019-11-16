@@ -1,0 +1,172 @@
+<view class='index' style="background-color:#f9f9fa;">
+
+
+  <view class='index-bg' style="margin-top:60px">
+
+
+    <view style="flex-direction:row;display:flex;margin-left:0px; background-color:white;height:30px;margin-bottom:10px">
+      <view style="font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;margin-top:-5px;background-color:white;z-index:99" bindtap="back">＜</view>
+
+      <view style="position: absolute;right:45%;font-size:20px;font-weight:bolder">万货宝</view>
+
+    </view>
+    <swiper indicator-dots="true" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#fff" style="margin-top:-35px;height;170px">
+      <block wx:for="{{imgUrls}}" wx:key>
+        <swiper-item>
+          <navigator url='{{item.url}}' class='slide-navigator acea-row row-between-wrapper' hover-class='none'>
+            <image src="{{item.pic}}" class="slide-image" style="height;180px" mode="aspectFit" />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:0px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">了解万货宝供应商联盟</view>
+    </view>
+    <view style="text-align:left;width:94%;margin-left:3%">
+      <text style="width:100%;">万货宝是全民创业的项目，万货宝不光给客户提供营销软件支持，同时也在整合优势产品资源，打造万货宝分销市场。诚邀全国的产品供应商加盟。</text>
+
+      <view style="margin-top:20px">
+        <view style="width:100%;font-size:18px;font-weight:bolder">加人供应商联盟有什么好处</view>
+        <text style="width:100%">万货宝是一个低门槛的创业平台，将最大化的维护您的
+产品利润，同时线上重点推广您的产品。</text>
+      </view>
+
+      <view style="margin-top:10px">
+        <view style="width:100%;font-size:18px;font-weight:bolder">加人供应商联盟后的主要事务</view>
+        <text style="width:100%">万货宝负责推广销售，你的主要任务就是完善产品、提高产品质量，同时做好物流售后工作。</text>
+      </view>
+
+      <view style="margin-top:10px">
+        <view style="width:100%;font-size:18px;font-weight:bolder">如何加人供应商联盟</view>
+        <text style="width:100%">洽谈合作、签订合作协议、上架产品、物流售后</text>
+      </view>
+
+    </view>
+    <image src="http://www.wanhuob.com/wxapp/images/u113.png" class="" style="width:100%;margin-top:10px;height:150px;" mode="aspectFit" />
+
+  </view>
+
+  
+
+
+  <!-- <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      
+
+
+    </view> </view> -->
+
+
+
+
+
+
+  <view style="background-color:white;text-align:center">
+
+    <view style="height:10px"></view>
+
+    <view style="text-align:center">
+      <view style="height:8px"></view>
+      <text>在线提交</text>
+    </view>
+
+
+    <form bindsubmit='formSubmit'>
+      <view class="info_list">
+
+
+
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 姓名</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写姓名" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 电话</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写电话" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 地址</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写地址" />
+            </view>
+          </view>
+        </block>
+
+
+        <block>
+          <view class="weui_cell">
+
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:50px;margin-left: 80px;' placeholder="备注" />
+            </view>
+          </view>
+        </block>
+
+
+        <view style="display:flex;flex-direction:row;margin-top:20px">
+
+          <view style="margin-left:20%;margin-top:10px">
+            重新编辑
+          </view>
+
+
+          <view style="width:30vw;height:50px;background-color: #1abc9c;text-align:center;font-size:20px;color:white;position: absolute;right:30%">
+            <view>
+              <view style="height:8px"></view>
+              <text>提交</text>
+            </view>
+          </view>
+
+        </view>
+
+
+
+        <view style="height:50px"></view>
+
+
+
+      </view>
+    </form>
+
+
+
+
+  </view>
+
+
+
+
+
+
+
+
+</view>
+
+
+<coupon-window window='{{window}}' couponList="{{couponList}}" bind:onColse="onColse"></coupon-window>
+<home></home>

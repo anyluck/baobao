@@ -1,0 +1,84 @@
+<form bindsubmit='formSubmit'>
+      <view class="info_list" style="background-color:white">
+
+      <view style="height:30px"></view>
+
+      <view style="font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;margin-top:-5px;background-color:white;z-index:99" bindtap="back">＜</view>
+
+
+
+
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 店铺</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请设置店铺名称" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 手机</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="输入手机号码" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 验证码</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="短信验证码" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 密码</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="设置登录密码" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:100%;'> 已阅读并同意《用户服务协议》</view>
+            </view>
+            
+          </view>
+        </block>
+
+
+        
+
+          <view style="width:80vw;height:50px;background-color: #1abc9c;text-align:center;font-size:20px;color:white;margin-top:50px;border-radius: 50px;margin-left:10%">
+            <view>
+              <view style="height:8px"></view>
+              <text>确认</text>
+            </view>
+          </view>
+
+        
+
+
+
+        <view style="height:50px"></view>
+
+
+
+      </view>
+    </form>

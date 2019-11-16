@@ -1,0 +1,320 @@
+<view>
+<view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;" bindtap="back">＜</view> 
+  <form bindsubmit='formSubmit'>
+    <view class="info_list">
+      <!-- <image style='width:100%;height:120px;' src='../../images/zhuce.jpg'></image> -->
+      
+      <text style='color:grey;margin-left:5%;font-size:15px;'>欢迎{{shtype}}入驻，请填写申请信息</text>
+
+      <block wx:if="{{shtype=='一般商户'}}">
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 营业执照</view>
+          </view>
+          <view class="weui_cell_bd" style=" display: flex;flex-direction: row;">
+
+            <input name="yyzz" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="营业执照编号" />
+          </view>
+        </view>
+        <view class='textarea'>
+          <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
+
+          <view class='list acea-row row-middle'>
+            <view class='pictrue' wx:for="{{pics}}" wx:key>
+              <image src='{{item}}' style="width:140px;height:140px"></image>
+
+            </view>
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="yyzz" bindtap="uploadpic" wx:if="{{pics.length < 8}}">
+              <text class='iconfont icon-icon25201'></text>
+              <view>上传营业执照</view>
+            </view>
+          </view>
+        </view>
+
+      </block>
+
+      <block wx:if="{{shtype=='小型商户'}}">
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 法人手持身份证照片</view>
+          </view>
+          <view class="weui_cell_bd" style=" display: flex;flex-direction: row;">
+
+
+          </view>
+        </view>
+        <view class='textarea'>
+          <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
+
+          <view class='list acea-row row-middle'>
+            <view class='pictrue' wx:for="{{pics_scsfz}}" wx:key>
+              <image src='{{item}}' style="width:140px;height:140px"></image>
+
+            </view>
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="pics_scsfz" bindtap='uploadpic' wx:if="{{pics.length < 8}}">
+              <text class='iconfont icon-icon25201'></text>
+              <view>上传法人手持身份证照片</view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户全称</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="商户全称" />
+          </view>
+        </view>
+      </block>
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户简称</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="shjc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="商户简称" />
+          </view>
+        </view>
+      </block>
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 经营地址</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="jydz" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="经营地址" />
+          </view>
+        </view>
+      </block>
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 详细地址</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="xxdz" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="详细地址" />
+          </view>
+        </view>
+      </block>
+
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 法人身份证正反面照片</view>
+          </view>
+          <view class="weui_cell_bd" style=" display: flex;flex-direction: row;">
+
+          </view>
+        </view>
+        <view class='textarea'>
+          <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
+
+          <view class='list acea-row row-middle'>
+            <view class='pictrue' wx:for="{{pics_sfz}}" wx:key>
+              <image src='{{item}}' style="width:140px;height:140px"></image>
+
+            </view>
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="pics_sfz" bindtap='uploadpic' wx:if="{{pics.length < 8}}" style="margin-right:30px">
+              <text class='iconfont icon-icon25201'></text>
+              <view>上传身份证正面</view>
+            </view>
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="pics_sfz" bindtap='uploadpic' wx:if="{{pics.length < 8}}">
+              <text class='iconfont icon-icon25201'></text>
+              <view>上传身份证反面</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户联系人</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="lxr" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="商户联系人" />
+          </view>
+        </view>
+      </block>
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 联系电话</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="lxdh" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="联系电话" />
+          </view>
+        </view>
+      </block>
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 开户支行</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="khzh" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="开户支行" />
+          </view>
+        </view>
+      </block>
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 银行卡号</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="yhkh" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="银行卡号" />
+          </view>
+        </view>
+      </block>
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> {{shtype=='一般商户' ? '对公银行卡照片' : '银行卡正面照'}}</view>
+          </view>
+          <view class="weui_cell_bd" style=" display: flex;flex-direction: row;">
+
+
+          </view>
+        </view>
+        <view class='textarea'>
+          <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
+
+          <view class='list acea-row row-middle'>
+            <view class='pictrue' wx:for="{{pics_yhk}}" wx:key>
+              <image src='{{item}}' style="width:140px;height:140px"></image>
+
+            </view>
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="pics_yhk" bindtap='uploadpic' wx:if="{{pics_yhk.length < 8}}">
+              <text class='iconfont icon-icon25201'></text>
+              <view>{{shtype=='一般商户' ? '对公银行卡照片' : '银行卡正面照'}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> {{shtype=='一般商户' ? '公司名称' : '开户人'}}</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="khr" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder=" {{shtype=='一般商户' ? '公司名称' : '开户人'}}" />
+          </view>
+        </view>
+      </block>
+
+
+
+
+
+
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 法人姓名</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="frxm" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="法人姓名" />
+          </view>
+        </view>
+      </block>
+
+
+
+
+
+
+      <!-- <block>
+    <view class="weui_cell">
+
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 姓名 <text style='color:red'>*</text></view>
+
+      </view>
+      <view class="weui_cell_bd">
+        <textarea name="xm" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写真实姓名，用于结算"> </textarea>
+      </view>
+      <image src='../../images/icon-arrowdown.png' style='width:20px;height:20px;margin-right:10px;position: absolute;right: 10px;'></image>
+
+
+
+    </view>
+  </block> -->
+
+      <!-- <block>
+    <view class="weui_cell">
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户名称</view>
+      </view>
+      <view class="weui_cell_bd">
+      <input name="shxm" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写您的商户名称" />          
+      </view>      
+    </view>
+  </block> -->
+
+
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户类型</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="shlx" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="{{shtype}}" />
+          </view>
+        </view>
+      </block>
+
+
+      <!-- <block>
+    <view class="weui_cell">
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 地址</view>
+      </view>
+      <view class="weui_cell_bd">
+      <input name="dz" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写您的地址" />          
+      </view>      
+    </view>
+  </block> -->
+
+
+
+
+      <block>
+        <view class="weui_cell">
+          <view class="weui_cell_bd">
+            <view class="weui_cell_bd_p" style='color:black;width:60px;'> 身份证号码</view>
+          </view>
+          <view class="weui_cell_bd">
+            <input name="sfzhm" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写您的身份证号码" />
+          </view>
+        </view>
+      </block>
+
+
+
+
+
+
+
+      <text>\n</text>
+      <button formType="submit" type="primary" style="height:40px">
+        <view style="margin-top:10px">申请加入{{shtype}}</view>
+      </button>
+
+
+
+    </view>
+    <text>\n</text>
+  </form>
+</view>

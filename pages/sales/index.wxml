@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="userinfo">
+    <button wx:if="{{userInfo==null}}" class="head" open-type="getUserInfo" bindgetuserinfo="getUseInfo">登录</button>
+    <image class="userinfo-avatar" src="{{head_pic}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{nickname}}</text>
+  </view>
+
+  <block>
+    
+    <view class="weui_cell">
+      <!-- <image src='../../images/share.png' style='width:20px;height:20px;margin-right:10px'></image> -->
+
+      <view class="weui_cell_bd2">
+
+        <view class="weui_cell_bd_p" style='color:black;'> 累计佣金</view>
+        <view class="weui_cell_bd_p" style='color:black;'> 0.00元</view>
+      </view>
+      <view class="" style='align-items:flex-end;font-size:11px;display: flex;flex-direction: row;position: absolute;right: 20px;'>
+      </view>
+
+    </view>
+  </block>
+
+  <block>
+    <view class="weui_cell">
+      <!-- <image src='../../images/share.png' style='width:20px;height:20px;margin-right:10px'></image> -->
+      <view class="weui_cell_bd2">
+
+        <view class="weui_cell_bd_p" style='color:black;'> 可提现佣金</view>
+        <view class="weui_cell_bd_p" style='color:black;'> 0.00元</view>
+      </view>
+      <view class="" style='display: flex;font-size:11px;display: flex;flex-direction: row;position: absolute;right: 20px;width:60px;'>
+        <button style='background-color: red;color:white;width:60px;height:30px;font-size:12px;'>提现</button>
+
+
+      </view>
+
+    </view>
+  </block>
+
+  <view class='head' style=''>
+
+    <view class='iconText' bindtap='goyj'>
+      <text style='font-size: 25px;margin-bottom: 5px;color: black;'>代理佣金</text>
+      <text style='font-size: 15px;margin-bottom: 5px;color: grey;'>0.00元</text>
+    </view>
+    <view class='iconText' bindtap='godd'>
+      <text style='font-size: 25px;margin-bottom: 5px;color: black;'>代理订单</text>
+      <text style='font-size: 15px;margin-bottom: 5px;color: grey;'>0个</text>
+    </view>
+    <view class='iconText' bindtap='gomx'>
+      <text style='font-size: 25px;margin-bottom: 5px;color: black;'>佣金明细</text>
+      <text style='font-size: 15px;margin-bottom: 5px;color: grey;'>佣金明细</text>
+    </view>
+
+  </view>
+
+  <view class='head' style='margin-top: -10px;'>
+
+    <view class='iconText' bindtap='gotd'>
+      <text style='font-size: 25px;margin-bottom: 5px;color: black;'>我的团队</text>
+      <text style='font-size: 15px;margin-bottom: 5px;color: grey;'>0人</text>
+    </view>
+   <!-- <view class='iconText' bindtap='goxx'>
+      <text style='font-size: 25px;margin-bottom: 5px;color: black;'>我的下线</text>
+      <text style='font-size: 15px;margin-bottom: 5px;color: grey;'>0人</text>
+    </view>-->
+    <view class='iconText' bindtap='goewm'>
+      <text style='font-size: 25px;margin-bottom: 5px;color: black;'>推广二维码</text>
+      <!--<text style='font-size: 15px;margin-bottom: 5px;color: grey;'>设置我的小店</text>-->
+    </view>
+
+  </view>
+
+  <view class="weui_cell_bd2">
+
+      <view class="weui_cell_bd_p"  style='color:red;margin-left:10px'> 注册成为代理商</view>
+
+    </view>
+
+
+
+</view>

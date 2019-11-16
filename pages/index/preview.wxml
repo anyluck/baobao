@@ -1,0 +1,6 @@
+<!--pages/index/preview.wxml-->
+
+<view bindtap="go" >
+  <image src="http://www.wanhuob.com/wxapp/images/preview.png" style="width:100vw;height:100vh">
+  </image>
+</view>

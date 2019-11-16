@@ -1,0 +1,184 @@
+<view class='index' style="background-color:#f9f9fa;">
+
+
+  <view class='index-bg' style="margin-top:60px">
+    <view style="flex-direction:row;display:flex;margin-left:0px; background-color:white;height:30px;margin-bottom:10px">
+      <view style="position: absolute;right:45%;font-size:20px;font-weight:bolder">万货宝</view>
+      <view style="position: absolute;right:20%;color:red" data-sign="login" bindtap="go">登录</view>
+      <view style="position: absolute;right:8%;color:green"  data-sign="regist" bindtap="go" >注册 </view>
+    </view>
+    <swiper indicator-dots="true" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#fff" style="margin-top:0px">
+      <block wx:for="{{imgUrls}}" wx:key>
+        <swiper-item>
+          <navigator url='{{item.url}}' class='slide-navigator acea-row row-between-wrapper' hover-class='none'>
+            <image src="{{item.pic}}" class="slide-image" style="height;190px" mode="" />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:50px"></view>
+      <view style="margin-top:0px;">\n\n我们所做的一切</view>
+    </view>
+    <view style="width:100%">只为让我们的用户提高销售</view>
+    <view style="height:10px"></view>
+  </view>
+
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">创新营销系统</view>
+    </view>
+    <view style="width:100%">企业自卖分销两不误，选万货、卖万货！</view>
+    <image src="http://www.wanhuob.com/wxapp/images/u65.png" class="" style="width:100%;margin-top:-50px" mode="aspectFit" />
+
+  </view>
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">助力全民创业</view>
+    </view>
+    <view style="width:100%">人人皆可以拥有小程序，再小的个体也有自己的品牌</view>
+    <image src="http://www.wanhuob.com/wxapp/images/u69.png" class="" style="width:100%;margin-top:-50px" mode="aspectFit" />
+
+  </view>
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">
+        提供三种服务</view>
+    </view>
+    <view style="width:100%">企业小程序开发、个人小程序搭建、供应商联盟</view>
+    <navigator url='../index/qyapp' class='' hover-class='none'>
+      <image src="http://www.wanhuob.com/wxapp/images/u73.png" class="" style="width:100%;margin-top:20px" mode="aspectFit" />
+
+
+
+
+      <view style="flex-direction:row;display:flex;margin-left:15px">
+        <view style="margin-left:5%;">企业小程序开发</view>
+        <view style="position: absolute;right:8%">了解更多 ＞</view>
+      </view>
+    </navigator>
+
+
+
+    <navigator url='../index/grapp' class='' hover-class='none'>
+      <image src="http://www.wanhuob.com/wxapp/images/u75.png" class="" style="width:100%;margin-top:20px" mode="aspectFit" />
+
+
+
+      <view style="flex-direction:row;display:flex;margin-left:15px">
+        <view style="margin-left:5%;">个人小程序搭建</view>
+        <view style="position: absolute;right:8%">了解更多 ＞</view>
+      </view>
+    </navigator>
+
+
+    <navigator url='../index/gysapp' class='' hover-class='none'>
+      <image src="http://www.wanhuob.com/wxapp/images/u77.png" class="" style="width:100%;margin-top:20px" mode="aspectFit" />
+
+
+
+      <view style="flex-direction:row;display:flex;margin-left:15px">
+        <view style="margin-left:5%;">供应商联盟</view>
+        <view style="position: absolute;right:8%">了解更多 ＞</view>
+      </view>
+      </navigator>
+
+  </view>
+   
+
+
+  <view style="width:100vw;height:50px;background-color: #1abc9c;text-align:center;font-size:25px;color:white;font-weight:bolder">
+    <view>
+      <view style="height:8px"></view>
+      <text>项目推广代理招商</text>
+    </view>
+  </view>
+
+  <view style="background-color:white">
+
+    <view style="height:50px"></view>
+    <view style="text-align:center">
+      <view style="height:8px"></view>
+      <text>代理申请</text>
+    </view>
+
+
+    <form bindsubmit='formSubmit'>
+      <view class="info_list">
+
+
+
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 姓名</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写姓名" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 电话</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写电话" />
+            </view>
+          </view>
+        </block>
+
+
+        <block>
+          <view class="weui_cell">
+
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:50px;margin-left: 80px;' placeholder="备注" />
+            </view>
+          </view>
+        </block>
+
+
+        <view style="width:100vw;height:50px;background-color: #1abc9c;text-align:center;font-size:20px;color:white;">
+          <view>
+            <view style="height:8px"></view>
+            <text>提交</text>
+          </view>
+        </view>
+        <view style="height:50px"></view>
+
+
+
+      </view>
+    </form>
+
+
+
+
+  </view>
+
+
+
+
+
+
+
+
+</view>
+
+
+<coupon-window window='{{window}}' couponList="{{couponList}}" bind:onColse="onColse"></coupon-window>
+<home></home>

@@ -1,0 +1,99 @@
+<form bindsubmit='formSubmit'>
+<view class="info_list">
+<image style='width:100%;height:120px;' src='../../images/zhuce.jpg'></image>
+<text style='color:grey;margin-left:5%;font-size:15px;'>欢迎加入推广员，请填写申请信息</text>
+  <block>
+    <view class="weui_cell">
+
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 姓名 <text style='color:red'>*</text></view>
+
+      </view>
+      <view class="weui_cell_bd">
+        <textarea name="username" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写真实姓名，用于结算"> </textarea>
+      </view>
+      <!-- <image src='../../images/icon-arrowdown.png' style='width:20px;height:20px;margin-right:10px;position: absolute;right: 10px;'></image> -->
+
+
+
+    </view>
+  </block>
+
+  <block>
+    <view class="weui_cell">
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户名称</view>
+      </view>
+      <view class="weui_cell_bd">
+      <input name="shms" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写您的商户名称" />          
+      </view>      
+    </view>
+  </block>
+
+
+
+  <block>
+    <view class="weui_cell">
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 商户类型</view>
+      </view>
+      <view class="weui_cell_bd">
+      <input name="type" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写一般，小微，快速" />          
+      </view>      
+    </view>
+  </block>
+ 
+
+  <block>
+    <view class="weui_cell">
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 地址</view>
+      </view>
+      <view class="weui_cell_bd">
+      <input name="dz" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写您的地址" />          
+      </view>      
+    </view>
+  </block>
+  
+
+  
+
+  <block>
+    <view class="weui_cell">
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 身份证号码</view>
+      </view>
+      <view class="weui_cell_bd">
+      <input name="sfz" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写您的身份证号码" />          
+      </view>      
+    </view>
+  </block>
+ 
+
+ 
+
+
+    <view class="weui_cell">
+
+      <view class="weui_cell_bd">
+        <view class="weui_cell_bd_p" style='color:black;width:60px;'> 手机号 <text style='color:red'>*</text></view>
+
+      </view>
+      <view class="weui_cell_bd">
+        <input type="number" name="sjh" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写手机号码"/>
+      
+        <!--<textarea name="mobile" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="请填写手机号码"> </textarea>-->
+      </view>
+      <!-- <image src='../../images/icon-arrowdown.png' style='width:20px;height:20px;margin-right:10px;position: absolute;right: 10px;'></image> -->
+
+
+
+    </view>
+  
+<text>\n</text>
+  <button formType="submit" type="primary"> 申请加入推广</button>
+
+
+
+</view>
+</form>

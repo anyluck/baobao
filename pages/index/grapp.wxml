@@ -1,0 +1,114 @@
+<view class='index' style="background-color:#f9f9fa;">
+
+
+  <view class='index-bg' style="margin-top:60px">
+
+
+    <view style="flex-direction:row;display:flex;margin-left:0px; background-color:white;height:30px;margin-bottom:10px">
+      <view style="font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;margin-top:-5px;background-color:white;z-index:99" bindtap="back">＜</view>
+
+      <view style="position: absolute;right:45%;font-size:20px;font-weight:bolder">万货宝</view>
+
+    </view>
+    <swiper indicator-dots="true" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#fff" style="margin-top:-35px;height;170px">
+      <block wx:for="{{imgUrls}}" wx:key>
+        <swiper-item>
+          <navigator url='{{item.url}}' class='slide-navigator acea-row row-between-wrapper' hover-class='none'>
+            <image src="{{item.pic}}" class="slide-image" style="height;180px" mode="aspectFit" />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+
+
+  <view class="board" style="margin-top:-20px;">
+    <view style="width:100%;background-color: white;">
+      <view style="height:50px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">被淘汰，从来不会提前打招呼</view>
+    </view>
+    <text style="width:100%">互联网就是生产力，基于互联网技术开发的应用
+能够提高管理、销售的能力，使得原业务处理更
+加高效，有效的提高企业市场竞争能力。</text>
+    <image src="http://www.wanhuob.com/wxapp/images/g1.png" class="" style="width:100%;margin-top:10px" mode="aspectFit" />
+
+  </view>
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">再小的个体也有自己的品牌</view>
+    </view>
+    <text style="width:100%">在信息化的今天，不管是做多小的生意，都可以用微
+信小程序来营销推广。每个人生都有自己的舞台
+    </text>
+    <image src="http://www.wanhuob.com/wxapp/images/u211.png" class="" style="width:100%;margin-top:-50px" mode="aspectFit" />
+
+  </view>
+
+  <view class="board" style="height:200px">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <text style="margin-top:0px;font-size:25px;font-weight:bolder">万货宝+个人小程序商城
+      助力大众创业</text>
+    </view>
+    <text style="width:100%">微信小程序销售自己喜欢的产品，我的生活我做主！
+    </text>
+    <image src="http://www.wanhuob.com/wxapp/images/u311.png" class="" style="width:100%;margin-top:-50px;" mode="aspectFit" />
+
+  </view>
+
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <text style="margin-top:-80px;font-size:25px;font-weight:bolder">
+一分钟开通，轻松三步上架商品</text>
+    </view>
+    <text style="width:100%">
+    </text>
+    <image src="http://www.wanhuob.com/wxapp/images/u69.png" class="" style="width:100%;margin-top:-50px" mode="aspectFit" />
+    <image src="http://www.wanhuob.com/wxapp/images/u39.png" class="" style="width:100%;margin-top:-100px" mode="aspectFit" />
+
+  </view>
+
+
+
+
+
+
+  <view style="background-color:white;text-align:center">
+    <view style="width:100vw;height:50px;background-color: #1abc9c;text-align:center;font-size:20px;color:white;border-radius: 50px;width:80%;margin-left:10%">
+      <view>
+        <view style="height:8px"></view>
+        <text>立即开通</text>
+      </view>
+    </view>
+
+
+
+    <view style="height:50px"></view>
+
+
+
+
+
+
+
+
+  </view>
+
+
+
+
+
+
+
+
+</view>
+
+
+<coupon-window window='{{window}}' couponList="{{couponList}}" bind:onColse="onColse"></coupon-window>
+<home></home>

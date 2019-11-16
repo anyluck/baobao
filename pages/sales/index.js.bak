@@ -1,0 +1,103 @@
+var app = getApp()
+Page({
+  data: {
+    userInfo: {},
+    projectSource: 'https://github.com/liuxuanqiang/wechat-weapp-mall',
+    userListInfo: [
+      {
+        icon: '../../images/iconfont-shouhuodizhi.png',
+        text: '钱包',
+        detail: "账号余额：￥100"
+      },
+      {
+        icon: '../../images/iconfont-shouhuodizhi.png',
+        text: '抵用券',
+        detail: "10张"
+      },
+      {
+        icon: '../../images/iconfont-shouhuodizhi.png',
+        text: '积分商城',
+        detail: ""
+      },
+      {
+        icon: '../../images/iconfont-shouhuodizhi.png',
+        text: '今日推荐',
+        detail: ""
+      },
+      {
+        icon: '../../images/iconfont-shouhuodizhi.png',
+        text: '我要合作',
+        detail: "轻松开店招财进宝"
+      },
+    ]
+  },
+
+  onLoad: function () {
+    var that = this
+    var nickname = wx.getStorageSync('nickname')
+    var head_pic = wx.getStorageSync('head_pic')
+    that.setData({
+      nickname:nickname,
+      head_pic:head_pic
+    })
+    //调用应用实例的方法获取全局数据
+
+  },
+  goyj: function (e) {
+    wx.navigateTo({      
+      url: '../sales/yj'
+    })
+
+  },
+  godd: function (e) {
+    wx.navigateTo({
+      url: '../sales/dd'
+    })
+
+  },
+  gomx: function (e) {
+    wx.navigateTo({
+      url: '../sales/mx'
+    })
+
+  },
+  gotd: function (e) {
+    wx.navigateTo({
+      url: '../sales/td'
+    })
+
+  },
+  goxx: function (e) {
+    wx.navigateTo({
+      url: '../sales/xx'
+    })
+
+  },
+  gosz: function (e) {
+    wx.navigateTo({
+      url: '../sales/sz'
+    })
+
+  },
+  goewm:function(){
+    wx.navigateTo({
+      url: '../sales/success'
+    })
+  }
+  /*getUseInfo: function (e) {
+
+    var that = this
+    console.log('getuserInfo1', e)
+    console.log('getuserInfo2', e.detail.userInfo)
+    getApp().globalData.userInfo = e.detail.userInfo
+    // console.log(getApp().globalData.userInfo)
+    typeof cb == "function" && cb(getApp().globalData.userInfo)
+
+    that.setData({
+      userInfo: app.globalData.userInfo,
+    });
+
+
+
+  },*/
+})

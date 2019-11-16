@@ -1,0 +1,175 @@
+<view class='index' style="background-color:#f9f9fa;">
+
+
+  <view class='index-bg' style="margin-top:60px">
+
+
+    <view style="flex-direction:row;display:flex;margin-left:0px; background-color:white;height:30px;margin-bottom:10px">
+      <view style="font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;margin-top:-5px" bindtap="back">＜</view>
+
+      <view style="position: absolute;right:45%;font-size:20px;font-weight:bolder">万货宝</view>
+
+    </view>
+    <swiper indicator-dots="true" autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(255,255,255,0.6)" indicator-active-color="#fff" style="margin-top:0px">
+      <block wx:for="{{imgUrls}}" wx:key>
+        <swiper-item>
+          <navigator url='{{item.url}}' class='slide-navigator acea-row row-between-wrapper' hover-class='none'>
+            <image src="{{item.pic}}" class="slide-image" style="height;190px" mode="" />
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:50px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">被淘汰，从来不会提前打招呼</view>
+    </view>
+    <text style="width:100%">互联网就是生产力，基于互联网技术开发的应用
+能够提高管理、销售的能力，使得原业务处理更
+加高效，有效的提高企业市场竞争能力。</text>
+    <image src="http://www.wanhuob.com/wxapp/images/g1.png" class="" style="width:100%;margin-top:10px" mode="aspectFit" />
+
+  </view>
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <view style="margin-top:0px;font-size:25px;font-weight:bolder">微信小程序商城 开辟销售新领域</view>
+    </view>
+    <text style="width:100%">小程序的火爆绝非偶然，它凭借微信9亿多的日活
+    动用户，引流和用户沉淀比较简单，从而促进销售
+    </text>
+    <image src="http://www.wanhuob.com/wxapp/images/u21.png" class="" style="width:100%;margin-top:-50px" mode="aspectFit" />
+
+  </view>
+
+  <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      <view style="height:10px"></view>
+      <text style="margin-top:0px;font-size:25px;font-weight:bolder">万货宝+小程序商城
+      助力销售更上一层楼</text>
+    </view>
+    <text style="width:100%">万货宝+小程序商城，除了拥有其他小程序功能外，独
+    有创新分销模式，助力销售更上一层楼。
+    </text>
+    <image src="http://www.wanhuob.com/wxapp/images/u31.png" class="" style="width:100%;margin-top:-50px" mode="aspectFit" />
+
+  </view>
+
+
+  <!-- <view class="board" style="">
+    <view style="width:100%;background-color: white;">
+      
+
+
+    </view> </view> -->
+
+
+
+
+
+
+  <view style="background-color:white;text-align:center">
+
+    <view style="height:10px"></view>
+
+    <text style="width:100%">
+        注册开通企业小程序，请前往万货宝官网操作
+        万货宝官方网址：www.wanhuob.com
+        您也可以在线提交相关信息
+        工作人员会第一时间联系你！
+      </text>
+
+    <view style="height:50px"></view>
+    <view style="text-align:center">
+      <view style="height:8px"></view>
+      <text>在线提交</text>
+    </view>
+
+
+    <form bindsubmit='formSubmit'>
+      <view class="info_list">
+
+
+
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 姓名</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写姓名" />
+            </view>
+          </view>
+        </block>
+
+        <block>
+          <view class="weui_cell">
+            <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p" style='color:black;width:60px;'> 电话</view>
+            </view>
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:30px;margin-left: 20px;' placeholder="填写电话" />
+            </view>
+          </view>
+        </block>
+
+
+        <block>
+          <view class="weui_cell">
+
+            <view class="weui_cell_bd">
+              <input name="shqc" class="weui_cell_bd_p" style='height:50px;margin-left: 80px;' placeholder="备注" />
+            </view>
+          </view>
+        </block>
+
+
+        <view style="display:flex;flex-direction:row;margin-top:20px">
+
+          <view style="margin-left:20%;margin-top:10px">
+            重新编辑
+          </view>
+
+
+          <view style="width:30vw;height:50px;background-color: #1abc9c;text-align:center;font-size:20px;color:white;position: absolute;right:30%">
+            <view>
+              <view style="height:8px"></view>
+              <text>提交</text>
+            </view>
+          </view>
+
+        </view>
+
+
+
+        <view style="height:50px"></view>
+
+
+
+      </view>
+    </form>
+
+
+
+
+  </view>
+
+
+
+
+
+
+
+
+</view>
+
+
+<coupon-window window='{{window}}' couponList="{{couponList}}" bind:onColse="onColse"></coupon-window>
+<home></home>
