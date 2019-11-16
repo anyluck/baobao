@@ -184,7 +184,8 @@ Page({
     this.data.where.news = this.data.nows ? 1 : 0;
     this.data.where.vip_id = getApp().globalData.vip_id;
     this.data.where.uid = wx.getStorageSync('uid');
-    this.data.where.spread_uid = getApp().globalData.spread_uid
+    this.data.where.spread_uid = wx.getStorageSync('uid')
+    // this.data.where.spread_uid = getApp().globalData.spread_uid
     this.setData({
       where: this.data.where
     });
@@ -202,7 +203,7 @@ Page({
       loading: true,
       loadTitle: ''
     });
-    console.log("tt" + that.data.where);
+    console.log("tt" , that.data.where);
     getMyProductslist(that.data.where).then(res => {
       console.log("getProductslist",res)
       let list = res.data;

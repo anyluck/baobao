@@ -54,6 +54,15 @@ Page({
 
 
   },
+
+  goNotices: function (e) {
+    var that = this;
+    wx.navigateTo({
+      url: '../goods_notices/index',
+    })
+
+  },
+
   /**
    *
    * 获取个人中心图标
@@ -62,6 +71,11 @@ Page({
     var that = this;
     var sign=e.currentTarget.dataset.sign
     console.log("sign",sign)
+    if (sign == "footprint") {
+      wx.navigateTo({
+        url: '../user_footprint/index',
+      })
+    }
     if(sign=="goodsManager"){
       wx.navigateTo({
         url: '../goods_cate/goodsManager',

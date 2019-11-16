@@ -25,6 +25,15 @@ export function postCartAdd(data) {
 }
 
 /**
+ * 获取浏览足迹
+ * @param object data
+ */
+export function getfootprint(data) {
+  return request.post('footprints', data);
+}
+
+
+/**
  * 获取收藏列表
  * @param object data
  */

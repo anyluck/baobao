@@ -5,6 +5,16 @@ import request from "./../utils/request.js";
  *
 */
 
+
+/**
+ * 货源变更
+ *
+ */
+
+export function getChange(page) {
+  return request.post("shop/shop_change", { page: page });
+}
+
 /**
  * 售后
  *

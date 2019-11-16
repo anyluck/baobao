@@ -2,8 +2,9 @@
   "usingComponents": {
     "navbar": "/components/navbar/index",
     "authorize": "/components/authorize/authorize",
-    "home": "/components/home/index",
+    "home": "/components/home/index", 
+    "cu-custom": "/colorui/components/cu-custom",
     "payment":"/components/payment/index"
-  },
+  },   
   "navigationBarTextStyle": "white"
 }

@@ -1,0 +1,28 @@
+<!--pages/sales/feeback.wxml-->
+<view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;" bindtap="back">＜</view>
+
+
+
+
+
+<view class="cu-form-group" style="">
+  <view class='listn'> 
+            <block wx:for="{{changeList}}" wx:for-item="child" wx:key style="margin-bottom:10px"> 
+             <view class='itenm'>
+                <view class='top acea-row row-between-wrapper'>
+                   <view class='pictxt acea-row row-between-wrapper'>
+                      <!-- <view class='pictrue'><image src='{{child.avatar}}'></image></view> -->
+                      <view class='text line1'>{{child.shopname}}</view>
+                   </view> 
+                   <view class='money'>价格调整：<text class='font-color'>￥{{child.now_price}}</text></view>
+                </view>
+                <view class='bottom'>
+                   <view><text class='name'>原分销价：</text>{{child.yuan_price}}</view>
+                   <view><text class='name'>调整时间：</text>{{child.addtimes}}</view>
+                   <view><text class='name'>调整tips：</text>{{child.text}}</view>
+                </view>
+             </view>
+            </block> 
+          </view>
+
+</view>

@@ -126,6 +126,19 @@
           </view>
           <view>联系客服</view>
         </button>
+        <button class='item'  hover-class='none' bindtap='goNotices'>
+          <view class='pictrue'>
+            <image src='/images/customer.png'></image>
+          </view>
+          <view>货源变更</view>
+        </button>
+
+         <button class='item'  hover-class='none' data-sign="footprint" bindtap='go'>
+          <view class='pictrue'>
+            <image src='/images/customer.png'></image>
+          </view>
+          <view>浏览足迹</view>
+        </button>
 
         <!-- <button class='item' open-type="contact" hover-class='none'>
           <view class='pictrue'>

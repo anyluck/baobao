@@ -76,8 +76,8 @@ Page({
   ChangCouponsClone:function(){
     this.setData({'coupon.coupon':false});
   },
-  bindInput: function (e) {
-
+  bindinput2: function (e) {
+    console.log("e", e)
     var that = this
     var value = e.detail.value
     inputValue = value
@@ -178,8 +178,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    var that=this
+ 
+    var that=this 
     console.log("dprice", options, options.dprice)
     if (options.dprice!=""){
       that.data.dprice = options.dprice

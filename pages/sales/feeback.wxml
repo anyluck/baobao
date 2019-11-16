@@ -1,0 +1,34 @@
+<!--pages/sales/feeback.wxml-->
+<view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;" bindtap="back">＜</view>
+
+<view class="cu-form-group margin-top">
+  <view class="title">售后原因</view>
+  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+    <view class="picker">
+      {{index>-1?picker[index]:'请选择售后原因'}}
+    </view>
+  </picker>
+</view>
+
+
+
+<view class="cu-form-group" style="">
+  <view class="action">
+    问题描述及诉求
+  </view>
+
+</view>
+<view class="cu-form-group" style="">
+
+
+  <input placeholder="请输入问题描述及售后诉求（退货或赔偿）" type="number" name="input" style="height:100px"></input>
+</view>
+
+<view class="cu-form-group margin-top">
+  <view class="title">上传凭证(最多3张)</view>
+  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+    <view class="picker">
+      {{index>-1?picker[index]:'请选择售后原因'}}
+    </view>
+  </picker>
+</view>

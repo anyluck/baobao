@@ -52,10 +52,36 @@ Page({
     let value = opt.value != undefined ? opt.value : null;
     (action && this[action]) && this[action](value);
   },
+
+
+// 申请售后
+  gofeeback: function (e) {
+    let that = this;
+    var order_id = e.currentTarget.dataset.order_id;
+
+    console.log("order_id", order_id,e)
+
+    wx.navigateTo({
+      url: '../sales/feeback?id=' + order_id,
+    })
+
+   
+    
+
+
+
+
+
+
+  },
+
+
   /**
    * 获取用户信息
    * 
   */
+
+  
   getUserInfo:function(){
     let that = this;
     getUserInfo().then(res=>{

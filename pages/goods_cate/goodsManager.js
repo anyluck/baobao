@@ -94,12 +94,21 @@ Page({
   },
   getAllCategory: function() {
     var that = this;
-    getCategoryListManage(getApp().globalData.vip_id, wx.getStorageSync('uid'), getApp().globalData.spread_uid).then(res => {
+    // getCategoryListManage(getApp().globalData.vip_id, wx.getStorageSync('uid'), getApp().globalData.spread_uid).then(res => {
+    //   that.setData({
+    //     productList: res.data
+    //   });
+    //   that.infoScroll();
+    // })
+
+    getCategoryListManage(getApp().globalData.vip_id, wx.getStorageSync('uid'), wx.getStorageSync('uid')).then(res => {
       that.setData({
         productList: res.data
       });
       that.infoScroll();
     })
+
+
   },
   scroll: function(e) {
     var scrollTop = e.detail.scrollTop;

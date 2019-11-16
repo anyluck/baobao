@@ -70,19 +70,24 @@ Page({
     
  
     // var that = this; 
-    wx.navigateTo({
-      // url: '../sales/zhuce',
-      // url: '../sales/ruzhu?shtype=一般商户',
-      url: '../goods_cate/storeManager',
-      // url:"../goods_cate/goodsManager",
-      // url: '../sales/ruzhu?shtype=快速商户',
-      // url: '../sales/fillinfo',
-    })
 
-    // wx.switchTab({
+    
+    // wx.navigateTo({
     //   // url: '../sales/zhuce',
-    //   url: '../user/user',
+    //   // url: '../sales/ruzhu?shtype=一般商户',
+    //   // url: '../goods_cate/storeManager',
+    //   // url: '../sales/feeback?id=wx157389184206036241'
+    //   url: '../goods_notices/index'
+    //   // url:"../order_list/index"
+    //   // url:"../goods_cate/goodsManager",
+    //   // url: '../sales/ruzhu?shtype=快速商户',
+    //   // url: '../sales/fillinfo',
     // })
+
+    wx.switchTab({
+      // url: '../sales/zhuce',
+      url: '../user/user',
+    })
     return
   },
   /**
