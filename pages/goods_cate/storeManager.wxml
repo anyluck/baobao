@@ -33,18 +33,13 @@
       <view class='item acea-row row-between-wrapper'>
         <view>店铺名称</view>
         <view class='input'>
-          <input type='text' name='nickname' value='{{userInfo.nickname}}'></input>
+          <input type='text' name='dian_name'  placeholder="填写名称" value='{{dian_name}}'></input>
         </view>
       </view>
       <view class='item acea-row row-between-wrapper'>
         <view>店铺地址</view>
-        <navigator url="/pages/user_phone/index" hover-class="none" class="input" wx:if="{{!userInfo.phone}}">
-          点击绑定手机号
-          <text class="iconfont icon-xiangyou"></text>
-        </navigator>
-        <view class='input acea-row row-between-wrapper' wx:else>
-          <input type='text' disabled='true' name='phone' value='{{userInfo.phone}}' class='id'></input>
-          <text class='iconfont icon-suozi'></text>
+        <view class='input'>
+          <input type='text' name='dian_address'  placeholder="填写地址" value='{{dian_address}}'></input>
         </view>
       </view>
       <view class='item acea-row row-between-wrapper'>
@@ -57,7 +52,7 @@
 
 
       <block style="margin-left:5%">
-        <view style="margin-left:5%">自定义首页图片</view>
+        <view style="margin-left:5%">自定义logo</view>
         <view class='textarea' style="margin-left:5%">
           <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
 
@@ -69,7 +64,7 @@
             </view>
             <view class='pictrue acea-row row-center-wrapper row-column' data-sign="yyzz" bindtap="uploadpic" wx:if="{{pics.length < 8}}">
               <text class='iconfont icon-icon25201'></text>
-              <view>上传首页图片</view>
+              <view>上传logo图片</view>
             </view>
           </view>
         </view>
@@ -82,12 +77,12 @@
           <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
 
           <view class='list acea-row row-middle'>
-            <view class='pictrue' wx:for="{{pics}}" wx:key>
+            <view class='pictrue' wx:for="{{pics_m}}" wx:key name="pics_m">
               <image src='{{item}}' style="width:140px;height:140px"></image>
 
 
             </view>
-            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="yyzz" bindtap="uploadpic" wx:if="{{pics.length < 8}}">
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="lb" bindtap="uploadpic_m" wx:if="{{pics_m.length < 8}}">
               <text class='iconfont icon-icon25201'></text>
               <view>上传轮播图片</view>
             </view>
@@ -101,24 +96,18 @@
       <view class='item acea-row row-between-wrapper'>
         <view>店铺客服微信</view>
         <view class='input'>
-          <input type='text' name='nickname' value='{{userInfo.nickname}}'></input>
+          <input type='text' name='lianxi_wx'  placeholder="填写微信" value='{{lianxi_wx}}'></input>
         </view>
       </view>
       <view class='item acea-row row-between-wrapper'>
         <view>店铺客服电话</view>
         <view class='input'>
-          <input type='text' name='nickname' value='{{userInfo.nickname}}'></input>
+          <input type='text' name='lianxi_phone' placeholder="填写电话" value='{{lianxi_phone}}'></input>
         </view>
       </view>
 
 
-      <view class="item acea-row row-between-wrapper" wx:if="{{userInfo.phone && userInfo.user_type == 'h5'}}">
-        <view>密码</view>
-        <navigator url="/pages/user_pwd_edit/index" hover-class="none" class="input">
-          点击修改密码
-          <text class="iconfont icon-xiangyou"></text>
-        </navigator>
-      </view>
+      
     </view>
     <button class='modifyBnt bg-color' formType="submit">保存修改</button>
     <view class="logOut cart-color acea-row row-center-wrapper" bindtap="outLogin" wx:if="{{userInfo.phone && userInfo.user_type == 'h5'}}">退出登录</view>

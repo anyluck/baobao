@@ -1,4 +1,4 @@
-import { getOrderDetail, orderPay, orderAgain, orderTake, orderDel} from '../../api/order.js';
+import { getOrderDetail, orderPay, orderAgain, orderTake, orderDel } from '../../api/order.js';
 import { getUserInfo } from '../../api/user.js';
 
 const app = getApp();
@@ -11,18 +11,18 @@ Page({
     parameter: {
       'navbar': '1',
       'return': '1',
-      'title': '订单详情',
+      'title': '审核进度',
       'color': true,
       'class': '0'
       // 'class': '2' 顶部为灰色
     },
-    order_id:'',
-    evaluate:0,
-    cartInfo:[],//购物车产品
-    orderInfo:{},//订单详情
-    isGoodsReturn:false,//是否为退款订单
-    status:{},//订单底部按钮状态
-    isClose:false,
+    order_id: '',
+    evaluate: 0,
+    cartInfo: [],//购物车产品
+    orderInfo: {},//订单详情
+    isGoodsReturn: false,//是否为退款订单
+    status: {},//订单底部按钮状态
+    isClose: false,
     payMode: [
       { name: "微信支付", icon: "icon-weixinzhifu", value: 'weixin', title: '微信快捷支付' },
       { name: "余额支付", icon: "icon-yuezhifu", value: 'yue', title: '可用余额:', number: 0 },
@@ -37,21 +37,19 @@ Page({
    */
   onLoad: function (options) {
     console.log("options.order_id", options.order_id)
-    if (options.order_id) this.setData({ order_id: options.order_id});
-    if (options.isReturen){
-      this.setData({ 'parameter.class': '2', isGoodsReturn:true });
+    if (options.order_id) this.setData({ order_id: options.order_id });
+    if (options.isReturen) {
+      this.setData({ 'parameter.class': '2', isGoodsReturn: true });
       this.selectComponent('#navbar').setClass();
     }
   },
 
 
   goFbdetail: function (e) {
-    var order_id = e.currentTarget.dataset.order_id
+    var order_id = e.currentTarget.dataset.index
     console.log("options.order_id", order_id)
-
-    // url: '../order_details/index?order_id=wx157387870883638033& isReturen=1'
     wx.navigateTo({
-      url: '../order_details/processdetail?order_id=' + order_id +"& isReturen=1",
+      url: '../order_details/processdetail?order_id' + order_id,
     })
   },
 
@@ -78,10 +76,10 @@ Page({
    * 
   */
   pay_open: function () {
-    this.setData({ 
-      pay_close: true, 
-      pay_order_id: this.data.orderInfo.order_id, 
-      totalPrice: this.data.orderInfo.pay_price 
+    this.setData({
+      pay_close: true,
+      pay_order_id: this.data.orderInfo.order_id,
+      totalPrice: this.data.orderInfo.pay_price
     });
   },
   /**
@@ -89,7 +87,7 @@ Page({
    * 
   */
   pay_complete: function () {
-    this.setData({pay_close: false, pay_order_id: '' });
+    this.setData({ pay_close: false, pay_order_id: '' });
     this.getOrderInfo();
   },
   /**
@@ -103,7 +101,7 @@ Page({
    * 登录授权回调
    * 
   */
-  onLoadFun:function(){
+  onLoadFun: function () {
     this.getOrderInfo();
     this.getUserInfo();
   },
@@ -111,9 +109,9 @@ Page({
    * 获取用户信息
    * 
   */
-  getUserInfo:function(){
+  getUserInfo: function () {
     let that = this;
-    getUserInfo().then(res=>{
+    getUserInfo().then(res => {
       that.data.payMode[1].number = res.data.now_money;
       that.setData({ payMode: that.data.payMode });
     })
@@ -122,15 +120,15 @@ Page({
    * 获取订单详细信息
    * 
   */
-  getOrderInfo:function(){
-    var that=this;
+  getOrderInfo: function () {
+    var that = this;
     wx.showLoading({ title: "正在加载中" });
-    getOrderDetail(this.data.order_id).then(res=>{
+    getOrderDetail(this.data.order_id).then(res => {
       var _type = res.data._status._type;
       wx.hideLoading();
       that.setData({ orderInfo: res.data, cartInfo: res.data.cartInfo, evaluate: _type == 3 ? 3 : 0 });
       that.getOrderStatus();
-    }).catch(err=>{
+    }).catch(err => {
       wx.hideLoading();
       app.Tips({ title: err }, '/pages/order_list/index');
     });
@@ -139,14 +137,14 @@ Page({
    * 
    * 剪切订单号
   */
-  copy:function(){
-    var that=this;
-    wx.setClipboardData({data: this.data.orderInfo.order_id});
+  copy: function () {
+    var that = this;
+    wx.setClipboardData({ data: this.data.orderInfo.order_id });
   },
   /**
    * 打电话
   */
-  goTel:function(){
+  goTel: function () {
     wx.makePhoneCall({
       phoneNumber: this.data.orderInfo.delivery_id
     })
@@ -156,28 +154,28 @@ Page({
    * 设置底部按钮
    * 
   */
-  getOrderStatus:function(){
-    var orderInfo = this.data.orderInfo || {}, _status = orderInfo._status || { _type:0},status={};
+  getOrderStatus: function () {
+    var orderInfo = this.data.orderInfo || {}, _status = orderInfo._status || { _type: 0 }, status = {};
     var type = parseInt(_status._type), combination_id = orderInfo.combination_id || 0, delivery_type = orderInfo.delivery_type,
-      seckill_id = orderInfo.seckill_id ? parseInt(orderInfo.seckill_id) : 0, 
-      bargain_id=orderInfo.bargain_id ? parseInt(orderInfo.bargain_id) : 0,
+      seckill_id = orderInfo.seckill_id ? parseInt(orderInfo.seckill_id) : 0,
+      bargain_id = orderInfo.bargain_id ? parseInt(orderInfo.bargain_id) : 0,
       combination_id = orderInfo.combination_id ? parseInt(orderInfo.combination_id) : 0;
-    status={
+    status = {
       type: type == 9 ? -9 : type,
-      class_status:0
+      class_status: 0
     };
-    if (type == 1 && combination_id >0) status.class_status = 1;//查看拼团
+    if (type == 1 && combination_id > 0) status.class_status = 1;//查看拼团
     if (type == 2 && delivery_type == 'express') status.class_status = 2;//查看物流
     if (type == 2) status.class_status = 3;//确认收货
     if (type == 4 || type == 0) status.class_status = 4;//删除订单
     if (!seckill_id && !bargain_id && !combination_id && (type == 3 || type == 4)) status.class_status = 5;//再次购买
-    this.setData({ status: status});
+    this.setData({ status: status });
   },
   /**
    * 去拼团详情
    * 
   */
-  goJoinPink:function(){
+  goJoinPink: function () {
     wx.navigateTo({
       url: '/pages/activity/goods_combination_status/index?id=' + this.data.orderInfo.pink_id,
     });
@@ -186,25 +184,25 @@ Page({
    * 再此购买
    * 
   */
-  goOrderConfirm:function(){
-    var that=this;
-    orderAgain( that.data.orderInfo.order_id ).then(res=>{
+  goOrderConfirm: function () {
+    var that = this;
+    orderAgain(that.data.orderInfo.order_id).then(res => {
       return wx.navigateTo({ url: '/pages/order_confirm/index?cartId=' + res.data.cateId });
     });
   },
-  confirmOrder:function(){
-    var that=this;
+  confirmOrder: function () {
+    var that = this;
     wx.showModal({
       title: '确认收货',
       content: '为保障权益，请收到货确认无误后，再确认收货',
       success: function (res) {
         if (res.confirm) {
-          orderTake(that.data.order_id).then(res=>{
+          orderTake(that.data.order_id).then(res => {
             return app.Tips({ title: '操作成功', icon: 'success' }, function () {
               that.getOrderInfo();
             });
-          }).catch(err=>{
-            return app.Tips({title:err});
+          }).catch(err => {
+            return app.Tips({ title: err });
           })
         }
       }
@@ -214,12 +212,12 @@ Page({
    * 
    * 删除订单
   */
-  delOrder:function(){
-    var that=this;
-    orderDel(this.data.order_id).then(res=>{
+  delOrder: function () {
+    var that = this;
+    orderDel(this.data.order_id).then(res => {
       return app.Tips({ title: '删除成功', icon: 'success' }, { tab: 3, url: 1 });
-    }).catch(err=>{
-      return app.Tips({title:err});
+    }).catch(err => {
+      return app.Tips({ title: err });
     });
   },
   /**

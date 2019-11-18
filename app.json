@@ -13,6 +13,8 @@
     "pages/goods_cate/storeManager",
     "pages/goods_cate/uploadGood",
     "pages/order_details/index",
+    "pages/order_details/processdetail",
+    
     "pages/user_sgin/index",
     "pages/user/user",
     "pages/user_get_coupon/index",

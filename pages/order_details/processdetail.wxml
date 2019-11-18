@@ -1,0 +1,91 @@
+<navbar parameter='{{parameter}}' id="navbar"></navbar>
+<view class='order-details'>
+  <!-- 给header上与data上加on为退款订单-->
+  <view class='header bg-color acea-row row-middle {{isGoodsReturn ? "on":""}}'>
+    <view class='pictrue' wx:if="{{isGoodsReturn==false}}">
+      <image src='{{orderInfo.status_pic}}'></image>
+    </view>
+    <view class='data {{isGoodsReturn ? "on":""}}'>
+      <view class='state'>{{orderInfo._status._msg}}</view>
+      <view>{{orderInfo.add_time_y}}
+        <text class='time'>{{orderInfo.add_time_h}}</text>
+      </view>
+    </view>
+
+
+  </view>
+  <view wx:if="{{isGoodsReturn==false}}">
+    <view class='nav'>
+      <view class='navCon acea-row row-between-wrapper'>
+        <view class="{{status.type == 0 || status.type == -9 ? 'on':''}}">待付款</view>
+        <view class="{{status.type == 1 ? 'on':''}}">待发货</view>
+        <view class="{{status.type == 2 ? 'on':''}}">待收货</view>
+        <view class="{{status.type == 3 ? 'on':''}}">待评价</view>
+        <view class="{{status.type == 4 ? 'on':''}}">已完成</view>
+      </view>
+      <view class='progress acea-row row-between-wrapper'>
+        <view class='iconfont {{status.type == 0 || status.type == -9  ? "icon-webicon318":"icon-yuandianxiao"}} {{status.type >= 0 ? "font-color":""}}'></view>
+        <view class='line {{status.type > 0 ? "bg-color":""}}'></view>
+        <view class='iconfont {{status.type == 1 ? "icon-webicon318":"icon-yuandianxiao"}} {{status.type >= 1 ? "font-color":""}}'></view>
+        <view class='line {{status.type > 1 ? "bg-color":""}}'></view>
+        <view class='iconfont {{status.type == 2 ? "icon-webicon318":"icon-yuandianxiao"}} {{status.type >= 2 ? "font-color":""}}'></view>
+        <view class='line {{status.type > 2 ? "bg-color":""}}'></view>
+        <view class='iconfont {{status.type == 3 ? "icon-webicon318":"icon-yuandianxiao"}} {{status.type >= 3 ? "font-color":""}}'></view>
+        <view class='line {{status.type > 3 ? "bg-color":""}}'></view>
+        <view class='iconfont {{status.type == 4 ? "icon-webicon318":"icon-yuandianxiao"}} {{status.type >= 4 ? "font-color":""}}'></view>
+      </view>
+    </view>
+
+    <view class='line'>
+      <image src='/images/line.jpg'></image>
+    </view>
+  </view>
+
+  <view class='item acea-row row-between-wrapper' style="background-color: #fff;">
+    <view>进度跟踪</view>
+
+    <view class="cu-timeline">
+
+			<view class="cu-time">11-17</view> 
+
+      <view class="cu-item text-blue">
+				<view class="bg-blue content">
+					<text>2019-11-11 11:55:11</text> 
+          您的服务单财务已退款，请您注意查收
+          <text>经办人：laijiarong</text>
+				</view>
+				
+			</view>
+
+      <view class="cu-item">
+				<view class="content">
+					<text>2019-11-11 11:51:33</text>
+您的服务单退款申请业务主管已审核，等待财务确认
+经办人：李颖
+				</view>
+			</view>
+
+
+      <view class="cu-item">
+				<view class="content">
+					<text>2019-11-10 09:20:04</text>
+您的服务单已审核通过，请将商品寄往售后部
+经办人：李颖
+				</view>
+			</view>
+
+
+			<view class="cu-item">
+				<view class="content">
+					<text>2019-11-10 01:10:40</text>
+您的服务单已申请成功，待售后审核中
+经办人：系统
+				</view>
+			</view>
+		</view>
+
+  </view>
+</view>
+<home></home>
+<authorize bind:onLoadFun='onLoadFun'></authorize>
+<payment payMode='{{payMode}}' pay_close="{{pay_close}}" bind:onChangeFun='onChangeFun' order_id="{{pay_order_id}}" totalPrice='{{totalPrice}}'></payment>

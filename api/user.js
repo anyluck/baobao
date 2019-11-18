@@ -16,6 +16,18 @@ export function addContact(data) {
   return request.post("sign/contact");
 }
 
+
+/**
+ * 申请售后
+ *
+ */
+export function add_sale(data) {
+  return request.post('sale/add_sale', data);
+}
+
+
+
+
 /**
  * 获取用户中心菜单
  *
@@ -32,6 +44,18 @@ export function getUserInfo(){
   return request.get('user');
 }
 
+
+
+
+/**
+ * 获取店铺信息
+ * @param object
+*/
+export function getStoreInfo(data) {
+  return request.post('contact/show_contact', data);
+}
+
+ 
 /**
  * 修改用户信息
  * @param object
@@ -39,6 +63,15 @@ export function getUserInfo(){
 export function userEdit(data){
   return request.post('user/edit',data);
 }
+
+// /**
+//  * 修改店铺信息
+//  * @param object
+// */
+// export function storeEdit(data) {
+//   return request.post('user/edit', data);
+// }
+
 
 
 /**

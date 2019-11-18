@@ -1,34 +1,84 @@
 <!--pages/sales/feeback.wxml-->
 <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;" bindtap="back">＜</view>
-
-<view class="cu-form-group margin-top">
-  <view class="title">售后原因</view>
-  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-    <view class="picker">
-      {{index>-1?picker[index]:'请选择售后原因'}}
-    </view>
-  </picker>
-</view>
-
-
-
-<view class="cu-form-group" style="">
-  <view class="action">
-    问题描述及诉求
+<form bindsubmit="formSubmit" report-submit='true'>
+  <view class="cu-form-group margin-top">
+    <view class="title">售后原因</view>
+    <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+      <view class="picker">
+        {{index>-1?picker[index]:'请选择售后原因'}}
+      </view>
+    </picker>
   </view>
 
-</view>
-<view class="cu-form-group" style="">
 
 
-  <input placeholder="请输入问题描述及售后诉求（退货或赔偿）" type="number" name="input" style="height:100px"></input>
-</view>
-
-<view class="cu-form-group margin-top">
-  <view class="title">上传凭证(最多3张)</view>
-  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-    <view class="picker">
-      {{index>-1?picker[index]:'请选择售后原因'}}
+  <view class="cu-form-group" style="">
+    <view class="action">
+      问题描述及诉求
     </view>
-  </picker>
+
+  </view>
+  <view class="cu-form-group" style="">
+
+
+    <input placeholder="请输入问题描述及售后诉求（退货或赔偿）" type="number" name="reason" style="height:100px"></input>
+  </view>
+
+  <view class="" style="display:flex;flex-direction:column;item-align:left;width:100%;background-color: white">
+
+    <block style="margin-left:5%;width:100%;item-align:left;">
+      <view style="margin-left:5%">上传凭证(最多3张)</view>
+      <view class='textarea' style="margin-left:5%">
+        <textarea placeholder='' name="comment" placeholder-class='placeholder' style="height:40px"></textarea>
+
+        <view class='list acea-row row-middle'>
+          <view class='pictrue' wx:for="{{pics_m}}" wx:key name="pics_m" >
+            <image src='{{item}}' style="width:140px;height:140px"></image>
+
+
+          </view>
+          <view class='pictrue acea-row row-center-wrapper row-column' data-sign="lb" bindtap="uploadpic_m" wx:if="{{pics_m.length < 8}}">
+            <text class='iconfont icon-icon25201'></text>
+            <view>上传凭证图片</view>
+          </view>
+        </view>
+      </view>
+
+    </block>
+  </view>
+
+  <view class="cu-form-group" style="">
+    <view class="action">
+      联系方式
+    </view>
+
+  </view>
+  <view class="cu-form-group" style="">
+    <view class="action">
+      联系人
+    </view>
+
+    <input placeholder="莎萨" type="number" name="name" style="height:100px"></input>
+  </view>
+  <view class="cu-form-group" style="">
+    <view class="action">
+      联系电话
+    </view>
+
+    <input placeholder="180****1888" type="number" name="phone" style="height:100px"></input>
+  </view>
+
+  <view class="margin-top">
+    <button  type='primary' style="height:30px" formType="submit">提交</button>
+  </view>
+
+</form> 
+
+<view class="cu-form-group" style="">
+  <view class="action" style="color:gray;margin-top:20px;">
+    温馨提示： • 您可以将售后诉求填写申请，例如赔偿或者退货。商品寄回地址将在审核通过后以短信形式告知，或在申请记录中查询。 • 提交服务单后，售后专员可能与您电话沟通，请保持手机畅通。 • 审核结果会在售后订单信息及时公布，请留意查看。 • 退货处理成功后退款金额或审核赔偿金额将原路返回到您的支持账户中。 • 如果您对售后结果不满意，均可以在投诉中心发起投诉、申诉。
+  </view>
+  <view style="height:50px;"></view>
+
+
 </view>

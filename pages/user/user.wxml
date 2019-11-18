@@ -155,7 +155,7 @@
       </view>
     </view>
   </view>
-  <image src='/images/banner.png' class='' style="width:100%;" mode="aspectFit"></image>
+  <image src='/images/banner.png' class='' style="width:100%;" mode="aspectFit" wx:if="{{vip_id==1}}"></image>
 </view>
 
 <authorize bind:onLoadFun='onLoadFun' isGoIndex='{{isGoIndex}}' iShidden="{{iShidden}}"></authorize>

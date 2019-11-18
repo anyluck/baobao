@@ -628,6 +628,18 @@ Page({
       })
       return
     }
-    addDistributionProduct(data).then(function(res) {})
+    addDistributionProduct(data).then(function(res) {
+      console.log("addDistributionProduct", res)
+      wx.showToast({
+        title: res.msg,
+      })
+    }).catch(err => {
+      //状态异常返回上级页面
+      wx.showToast({
+        title: err,
+        icon:"none"
+      })
+      // return app.Tips({ title: err }, { tab: 3, url: 1 });
+    })
   }
 })

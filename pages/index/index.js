@@ -2,7 +2,7 @@ const app = getApp();
 
 import { orderProduct, orderComment } from '../../api/order.js';
 const util = require('../../utils/util.js');
-
+ 
 
 import { getIndexData, getCoupons } from '../../api/api.js';
 import Util from '../../utils/util.js';
@@ -76,18 +76,21 @@ Page({
     //   // url: '../sales/zhuce',
     //   // url: '../sales/ruzhu?shtype=一般商户',
     //   // url: '../goods_cate/storeManager',
+      
+    //   // url: '../order_details/index?order_id=wx157387870883638033& isReturen=1'
+    //   url: '../order_details/processdetail?order_id=wx157387870883638033& isReturen=1'
     //   // url: '../sales/feeback?id=wx157389184206036241'
-    //   url: '../goods_notices/index'
+    //   // url: '../goods_notices/index'
     //   // url:"../order_list/index"
     //   // url:"../goods_cate/goodsManager",
     //   // url: '../sales/ruzhu?shtype=快速商户',
     //   // url: '../sales/fillinfo',
     // })
 
-    wx.switchTab({
-      // url: '../sales/zhuce',
-      url: '../user/user',
-    })
+    // wx.switchTab({
+    //   // url: '../sales/zhuce',
+    //   url: '../user/user',
+    // })
     return
   },
   /**
@@ -205,6 +208,8 @@ Page({
       //   pic: "http://www.allgofind.com/os/shop/crmpics/1.jpg"
       //  }]
 
+      // res.data.logoUrl = "http://www.allgofind.com/os/zbj/ibooker/logo22.jpg"
+
       // res.data.info.bastBanner=[
       //   {
       //     "id": 127,
@@ -278,6 +283,8 @@ Page({
       //     "pic": "http://datong.crmeb.net/public/uploads/attach/2019/01/15/5c3dc0ef27068.jpg"
       //   }
       // ]
+
+      
 
 	  getApp().globalData.upAmount = res.data.upAmount	
       that.setData({

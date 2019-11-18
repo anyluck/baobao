@@ -7,6 +7,10 @@
           <view class='state'>{{orderInfo._status._msg}}</view>
           <view>{{orderInfo.add_time_y}}<text class='time'>{{orderInfo.add_time_h}}</text></view>
       </view>
+
+      <view style="color:white;position: absolute;right:5%" data-order_id="{{orderInfo.order_id}}" bindtap="goFbdetail">
+      进度详情 》
+      </view>
    </view>
    <view wx:if="{{isGoodsReturn==false}}">
     <view class='nav'>
