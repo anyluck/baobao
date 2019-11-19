@@ -175,7 +175,19 @@ Page({
   getUserInfo: function() {
     var that = this;
     getUserInfo().then(res => {
+
+      that.data.pics.push(res.data.logo)
+
+
+      that.data.pics_m = res.data.banner.split(",")
+
       that.setData({
+        pics: that.data.pics,
+        pics_m: that.data.pics_m,
+        dian_name: res.data.dian_name,
+        dian_address: res.data.dian_address,
+        lianx_wx: res.data.lianx_wx,
+        lianxi_phone: res.data.lianxi_phone,
         userInfo: res.data,
         switchUserInfo: res.data.switchUserInfo || []
       });

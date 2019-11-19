@@ -40,14 +40,14 @@
         <text> 服务单号：{{item.order_number}} \n申请时间：{{item.add_time}}  </text>
       </view>
       <view style="display:flex;flex-direction: row">
-        <view class='pictrue'>
+        <!-- <view class='pictrue'>
           <image src='{{item.image}}' style="width:100px;height:100px;margin-left:15% ;margin-right:15px"></image>
-        </view>
-        <view class='item acea-row row-between-wrapper' wx:for="{{item.shop}}" wx:key>
-          <!-- <view class='pictrue'>
-          <image src='{{item.productInfo.image}}'></image>
         </view> -->
-          <view class='text'>
+        <view class='item acea-row row-between-wrapper' wx:for="{{item.shop}}" wx:key>
+          <view class='pictrue'>
+          <image src='{{item.productInfo.image}}' ></image>
+        </view>
+          <view class='text' style="margin-left:15px">
             <view class='acea-row row-between-wrapper' style="width:100%">
               <view class='name line1'>{{item.productInfo.store_name}}</view>
               <view class='num' style="position:absolute;right:15%">x {{item.cart_num}}</view>

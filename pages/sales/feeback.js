@@ -59,7 +59,7 @@ Page({
 
     if (that.data.pics_m.length>0){
       for (var i = 0; i < that.data.pics_m.length;i++){
-        images += that.data.pics_m[i]
+        images += that.data.pics_m[i]+","
       }
       
     }

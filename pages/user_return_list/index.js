@@ -16,7 +16,7 @@ Page({
     parameter: {
       'navbar': '1',
       'return': '1',
-      'title': '售后/退货列表',
+      'title': '售后/退款列表',
       'color': false
     },
     loading: false, //是否加载中
