@@ -1,8 +1,11 @@
 // pages/return-list/index.js
-import { getOrderList, getfeebackList } from '../../api/order.js';
+import {
+  getOrderList,
+  getfeebackList
+} from '../../api/order.js';
 
 
-const app=getApp();
+const app = getApp();
 
 Page({
 
@@ -11,69 +14,104 @@ Page({
    */
   data: {
     parameter: {
-      'navbar': '1', 
+      'navbar': '1',
       'return': '1',
       'title': '售后/退货列表',
       'color': false
     },
-    loading: false,//是否加载中
-    loadend: false,//是否加载完毕
-    loadTitle: '加载更多',//提示语
-    orderList: [],//订单数组
-    orderStatus: -3,//订单状态
+    loading: false, //是否加载中
+    loadend: false, //是否加载完毕
+    loadTitle: '加载更多', //提示语
+    orderList: [], //订单数组
+    orderStatus: -3, //订单状态
     page: 1,
-    limit: 10
+    type: 0,
+    limit: 10,
+    fbList:[]
   },
   /**
    * 授权回调
-  */
-  onLoadFun:function(){
+   */
+  onLoadFun: function() {
     this.getOrderList();
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    if (options.isT) this.setData({'parameter.return':0});
-    var that=this
+  onLoad: function(options) {
+    if (options.isT) this.setData({
+      'parameter.return': 0
+    });
+    var that = this
     that.getfeebackList()
   },
+  changeType: function(e) {
+    var type = e.currentTarget.dataset.type
+    this.setData({
+      type: e.currentTarget.dataset.type,
+      loadend: false,
+      page: 1,
+      userBillList: []
+    });
+    console.log("type", type)
 
-  getfeebackList: function () {
+    
+
+    // this.getUserBillList();
+  },
+
+
+  getfeebackList: function() {
     var that = this;
+    //sale/show_sale
     getfeebackList({
       page: 1,
       status: 1
     }).then(res => {
-      console.log("res", res)
+      console.log("res", res,res.data.list.data)
+      that.data.fbList=res.data.list.data
+      that.setData({
+        fbList: that.data.fbList
+      });
+
     }).catch(err => {
-      that.setData({ loading: false, loadTitle: "加载更多" });
+      that.setData({
+        loading: false,
+        loadTitle: "加载更多"
+      });
     });
 
   },
 
   /**
    * 去订单详情
-  */
-  goOrderDetails: function (e) {
+   */
+  goOrderDetails: function(e) {
     var order_id = e.currentTarget.dataset.order_id;
-    if (!order_id) return app.Tips({ title: '缺少订单号无法查看订单详情' });
-    wx.navigateTo({ url: '/pages/order_details/index?order_id=' + order_id +'&isReturen=1' })
+    if (!order_id) return app.Tips({
+      title: '缺少订单号无法查看订单详情'
+    });
+    wx.navigateTo({
+      url: '/pages/order_details/index?order_id=' + order_id + '&isReturen=1'
+    })
   },
 
   /**
-  * 获取订单列表
- */
-  getOrderList: function () {
+   * 获取订单列表
+   */
+  getOrderList: function() {
     var that = this;
     if (that.data.loadend) return;
     if (that.data.loading) return;
-    that.setData({ loading: true, loadTitle: "" });
+    that.setData({
+      loading: true,
+      loadTitle: ""
+    });
     getOrderList({
       type: that.data.orderStatus,
       page: that.data.page,
       limit: that.data.limit,
-    }).then(res=>{
+    }).then(res => {
       var list = res.data || [];
       var loadend = list.length < that.data.limit;
       that.data.orderList = app.SplitArray(list, that.data.orderList);
@@ -84,50 +122,53 @@ Page({
         loadTitle: loadend ? "我也是有底线的" : '加载更多',
         page: that.data.page + 1,
       });
-    }).catch(err=>{
-      that.setData({ loading: false, loadTitle: "加载更多" });
+    }).catch(err => {
+      that.setData({
+        loading: false,
+        loadTitle: "加载更多"
+      });
     });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.getOrderList();
   },
 })
