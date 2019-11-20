@@ -6,7 +6,7 @@
          <view class='line1'>{{item.store_name}}</view>
          <view class='acea-row row-between-wrapper'>
            <view class='money font-color'>￥{{item.price}}</view>
-           <view class='delete' data-id='{{item.pid}}' data-index='{{index}}' catchtap  ='delCollection'>删除</view>
+           <!-- <view class='delete' data-id='{{item.pid}}' data-index='{{index}}' catchtap  ='delCollection'>删除</view> -->
          </view>
       </view>
    </navigator>

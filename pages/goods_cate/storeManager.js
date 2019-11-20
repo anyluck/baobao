@@ -46,6 +46,37 @@ Page({
 
   },
 
+  DelPic: function (e) {
+    var index = e.target.dataset.index,
+      obj = e.target.dataset.imgobj,
+
+      that = this
+
+
+      // pic = this.data.pics[index];
+    console.log('index', index, e, obj)
+
+
+
+    if (obj == "pics") {
+      that.data.pics.splice(index, 1);
+      that.setData({
+        pics: that.data.pics
+      });
+    }
+
+    if (obj == "pics_m") {
+      that.data.pics_m.splice(index, 1);
+      that.setData({
+        pics_m: that.data.pics_m
+      });
+    }
+
+    
+
+
+  },
+
 
   /**
    * 小程序设置
@@ -181,6 +212,7 @@ Page({
 
       that.data.pics_m = res.data.banner.split(",")
 
+
       that.setData({
         pics: that.data.pics,
         pics_m: that.data.pics_m,
@@ -208,6 +240,11 @@ Page({
     console.log('sign', sign)
     util.uploadImageOne('upload/image', function(res) {
       console.log(res);
+
+      if (sign == "logo") {
+        that.data.pics.push(res.data.url);
+      }
+
       if (sign == "lb") {
         that.data.pics_m.push(res.data.url);
       }
@@ -215,7 +252,7 @@ Page({
 
       that.setData({
         pics_m: that.data.pics_m,
-
+        pics: that.data.pics,
 
       });
       console.log("pics_m", that.data.pics_m);
@@ -251,6 +288,32 @@ Page({
     if (!value.dian_name) return app.Tips({
       title: '店铺名称不能为空'
     });
+
+    var images = ""
+
+    if (that.data.pics_m.length > 0) {
+      for (var i = 0; i < that.data.pics_m.length; i++) {
+        if (i < that.data.pics_m.length-1){
+          images += that.data.pics_m[i] + ","
+        }else{
+          images += that.data.pics_m[i]
+        }
+        
+      }
+
+    }
+
+    // var obj={images:""}
+
+    // value.push(obj)
+    value["banner"] = images
+    value["logo"] = that.data.pics[0]
+
+    value["orderid"] = this.data.orderid
+
+
+
+
     value.avatar = userInfo.avatar;
     setFormId(formId);
 

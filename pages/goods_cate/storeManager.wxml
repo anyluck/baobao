@@ -59,10 +59,11 @@
           <view class='list acea-row row-middle'>
             <view class='pictrue' wx:for="{{pics}}" wx:key>
               <image src='{{item}}' style="width:140px;height:140px"></image>
+              <text class='iconfont icon-guanbi1 font-color' data-imgobj='pics' data-index='{{index}}' bindtap='DelPic'></text>
 
 
             </view>
-            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="yyzz" bindtap="uploadpic" wx:if="{{pics.length < 8}}">
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="logo" bindtap="uploadpic_m" wx:if="{{pics.length < 1}}">
               <text class='iconfont icon-icon25201'></text>
               <view>上传logo图片</view>
             </view>
@@ -79,10 +80,11 @@
           <view class='list acea-row row-middle'>
             <view class='pictrue' wx:for="{{pics_m}}" wx:key name="pics_m">
               <image src='{{item}}' style="width:140px;height:140px"></image>
+              <text class='iconfont icon-guanbi1 font-color' data-imgobj='pics_m' data-index='{{index}}' bindtap='DelPic'></text>
 
 
             </view>
-            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="lb" bindtap="uploadpic_m" wx:if="{{pics_m.length < 8}}">
+            <view class='pictrue acea-row row-center-wrapper row-column' data-sign="lb" bindtap="uploadpic_m" wx:if="{{pics_m.length < 6}}">
               <text class='iconfont icon-icon25201'></text>
               <view>上传轮播图片</view>
             </view>
@@ -96,7 +98,7 @@
       <view class='item acea-row row-between-wrapper'>
         <view>店铺客服微信</view>
         <view class='input'>
-          <input type='text' name='lianxi_wx'  placeholder="填写微信" value='{{lianxi_wx}}'></input>
+          <input type='text' name='lianx_wx'  placeholder="填写微信" value='{{lianx_wx}}'></input>
         </view>
       </view>
       <view class='item acea-row row-between-wrapper'>

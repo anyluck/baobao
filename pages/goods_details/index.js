@@ -179,12 +179,13 @@ Page({
    */
   onLoad: function (options) {
  
-    var that=this 
+    var that=this  
     console.log("dprice", options, options.dprice)
-    if (options.dprice!=""){
+    if (options.dprice != "" && options.dprice != undefined){
       that.data.dprice = options.dprice
       that.data.mytext = '立即下架'
     }
+    console.log("dprice", options, options.dprice, options.dprice != "", options.dprice != undefined, that.data.mytext)
    // console.log(that.data.myfunc)
     that.vip_id=getApp().globalData.vip_id
     that.setData({

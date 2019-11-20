@@ -1,10 +1,16 @@
 const app = getApp();
 
-import { orderProduct, orderComment } from '../../api/order.js';
+import {
+  orderProduct,
+  orderComment
+} from '../../api/order.js';
 const util = require('../../utils/util.js');
- 
 
-import { getIndexData, getCoupons } from '../../api/api.js';
+
+import {
+  getIndexData,
+  getCoupons
+} from '../../api/api.js';
 import Util from '../../utils/util.js';
 import {
   getUserInfo
@@ -19,8 +25,8 @@ Page({
    */
   data: {
     imgUrls: [],
-    itemNew:[],
-    activityList:[],
+    itemNew: [],
+    activityList: [],
     menus: [],
     bastBanner: [],
     bastInfo: '',
@@ -32,15 +38,16 @@ Page({
     salesInfo: '',
     likeInfo: [],
     lovelyBanner: [],
-    benefit:[],
+    benefit: [],
     indicatorDots: false,
     circular: true,
     autoplay: true,
     interval: 3000,
     duration: 500,
-    parameter:{
-      'navbar':'0',
-      'return':'0'
+    parameter: {
+      'navbar': '0',
+      'dian_name': '万货宝',
+      'return': '0'
     },
     window: false,
     userInfo: {},
@@ -49,15 +56,18 @@ Page({
     switchActive: false,
     loginType: app.globalData.loginType,
   },
-  
-  
+
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    var that=this
     if (options.spid) app.globalData.spid = options.spid;
     if (options.scene) app.globalData.code = decodeURIComponent(options.scene);
-
+    
+    that.getIndexConfig();
+    
     /*wx.navigateTo({
       // url: '../index/preview',
       // url: '../index/home' 
@@ -67,16 +77,16 @@ Page({
     })
     return*/
 
-    
- 
+
+
     // var that = this; 
 
-    
+
     // wx.navigateTo({
     //   // url: '../sales/zhuce',
     //   // url: '../sales/ruzhu?shtype=一般商户',
     //   // url: '../goods_cate/storeManager',
-      
+
     //   // url: '../order_details/index?order_id=wx157387870883638033& isReturen=1'
     //   url: '../order_details/processdetail?order_id=wx157387870883638033& isReturen=1'
     //   // url: '../sales/feeback?id=wx157389184206036241'
@@ -87,19 +97,27 @@ Page({
     //   // url: '../sales/fillinfo',
     // })
 
-    wx.switchTab({
-      // url: '../sales/zhuce',
-      url: '../user/user',
-    })
+    // wx.switchTab({
+    //   // url: '../sales/zhuce',
+    //   url: '../user/user',
+    // })
+    setTimeout(() => {
+      that.getUserInfo()
+    }, 2000);
+
+
+
+    
+
     return
   },
   /**
    * 授权回调
    */
-  onLoadFun: function (e) {
+  onLoadFun: function(e) {
 
     console.log("e3" + e)
-    this.getUserInfo();
+    
     //this.getMyMenus();
     var that = this
 
@@ -113,11 +131,15 @@ Page({
   /**
    * 删除图片
    * 
-  */
-  DelPic: function (e) {
-    var index = e.target.dataset.index, that = this, pic = this.data.pics[index];
+   */
+  DelPic: function(e) {
+    var index = e.target.dataset.index,
+      that = this,
+      pic = this.data.pics[index];
     that.data.pics.splice(index, 1);
-    that.setData({ pics: that.data.pics });
+    that.setData({
+      pics: that.data.pics
+    });
   },
   /**
    * 获取个人用户信息
@@ -125,9 +147,27 @@ Page({
   getUserInfo: function() {
     var that = this;
     getUserInfo().then(res => {
-      console.log(res.data)
+      console.log("getUserInfo", res,res.data, res.data.banner.split(","))
 
-      
+      var data = res.data.banner.split(",")
+
+      var pics = []
+
+      var o = {}
+      for (var i = 0; i < data.length; i++) {
+        o.url = data[i]
+        o.pic = data[i]
+        pics.push(o)
+
+
+      }
+      that.data.logoUrl = res.data.logo
+      that.data.imgUrls = pics
+      that.data.parameter.dian_name = res.data.dian_name
+
+
+
+
 
 
       wx.setStorageSync('uid', res.data.uid)
@@ -137,6 +177,9 @@ Page({
       getApp().globalData.spread_uid = res.data['spread_uid']
       //getApp().globalData.spread_uid = 140
       that.setData({
+        parameter: that.data.parameter,
+        logoUrl: res.data.logo,
+        imgUrls: pics,
         userInfo: res.data,
         xj: res.data.xj,
         loginType: res.data.login_type,
@@ -144,64 +187,80 @@ Page({
       });
 
 
-      if (res.data.vip_name == "普通用户"){
+      if (res.data.vip_name == "普通用户") {
         // wx.navigateTo({
         //   // url: '../index/preview',
         //   url: '../index/home'
         // })
 
-        
+
       }
 
 
 
 
-    });
+    }).catch((e) => {
+      console.log("fail" ,JSON.stringify(e))
+      this.getUserInfo()
+     });;
   },
   /**
    * 上传文件
    * 
-  */
-  uploadpic: function () {
+   */
+  uploadpic: function() {
     var that = this;
-    util.uploadImageOne('upload/image', function (res) {
+    util.uploadImageOne('upload/image', function(res) {
       console.log(res);
       that.data.pics.push(res.data.url);
-      that.setData({ pics: that.data.pics });
+      that.setData({
+        pics: that.data.pics
+      });
     });
   },
-  
-  catchTouchMove: function (res) {
+
+  catchTouchMove: function(res) {
     return false
   },
-  onColse:function(){
-    this.setData({ window: false});
+  onColse: function() {
+    this.setData({
+      window: false
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.getIndexConfig();
-    if(app.globalData.isLog && app.globalData.token) this.get_issue_coupon_list();
+  onShow: function() {
+    
+    
+    if (app.globalData.isLog && app.globalData.token) this.get_issue_coupon_list();
+    
   },
-  get_issue_coupon_list:function(){
+  get_issue_coupon_list: function() {
     var that = this;
-    getCoupons({page:1,limit:3}).then(res=>{
-      that.setData({ couponList: res.data });
-      if (!res.data.length) that.setData({ window: false });
+    getCoupons({
+      page: 1,
+      limit: 3
+    }).then(res => {
+      that.setData({
+        couponList: res.data
+      });
+      if (!res.data.length) that.setData({
+        window: false
+      });
     });
   },
   //数据初始化
-  getIndexConfig:function(){
+  getIndexConfig: function() {
     var that = this;
-    getIndexData().then(res=>{
-      console.log("res",res)
+    getIndexData().then(res => {
+      console.log("res", res)
 
       // res.data.logoUrl ="../../images/logo.png"
       // res.data.banner = [{ id: 104, name: "banenr2", url: "/pages/pink-list/index?id=2", 
@@ -284,9 +343,9 @@ Page({
       //   }
       // ]
 
-      
 
-	  getApp().globalData.upAmount = res.data.upAmount	
+
+      getApp().globalData.upAmount = res.data.upAmount
       that.setData({
         imgUrls: res.data.banner,
         menus: res.data.menus,
@@ -309,30 +368,40 @@ Page({
       wx.getSetting({
         success(res) {
           if (!res.authSetting['scope.userInfo']) {
-            that.setData({ window: that.data.couponList.length ? true : false });
+            that.setData({
+              window: that.data.couponList.length ? true : false
+            });
           } else {
-            that.setData({ window: false });
+            that.setData({
+              window: false
+            });
           }
         }
       });
+
+      
+
+
     })
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-    this.setData({ window:false});
+  onHide: function() {
+    this.setData({
+      window: false
+    });
   },
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.getIndexConfig();
     if (app.globalData.isLog && app.globalData.token) this.get_issue_coupon_list();
     wx.stopPullDownRefresh();
@@ -341,14 +410,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
