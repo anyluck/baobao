@@ -98,13 +98,13 @@
       <view class='serviceList acea-row row-middle'>
         <button class='item' bindtap="go" data-sign="goodsManager" hover-class='none' wx:if="{{vip_id>1}}">
           <view class='pictrue'>
-            <image src='/images/customer.png'></image>
+            <image src='/images/bargain.png'></image>
           </view>
           <view>商品管理</view>
         </button>
         <button class='item' bindtap="go" data-sign="storeManager" hover-class='none' wx:if="{{vip_id>1}}">
           <view class='pictrue'>
-            <image src='/images/customer.png'></image>
+            <image src='/images/dfk.png'></image>
           </view>
           <view>店铺设置</view>
         </button>
@@ -128,14 +128,14 @@
         </button>
         <button class='item'  hover-class='none' bindtap='goNotices'>
           <view class='pictrue'>
-            <image src='/images/customer.png'></image>
+            <image src='/images/balance.png'></image>
           </view>
           <view>货源变更</view>
         </button>
 
          <button class='item'  hover-class='none' data-sign="footprint" bindtap='go'>
           <view class='pictrue'>
-            <image src='/images/customer.png'></image>
+            <image src='/images/address.png'></image>
           </view>
           <view>浏览足迹</view>
         </button>

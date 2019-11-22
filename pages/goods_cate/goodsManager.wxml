@@ -15,9 +15,12 @@
   <view class='item acea-row row-center-wrapper {{0==navActive?"on":""}}' data-index='0' data-id='fenxiao' bindtap='tap'>
       <text>我的分销</text>
     </view>
-    <!-- <view class='item acea-row row-center-wrapper {{1==navActive?"on":""}}' data-index='1' data-id='fenlei' bindtap='tap'>
-      <text>我的收藏</text>
-    </view> -->
+    <view class='item acea-row row-center-wrapper {{1==navActive?"on":""}}' data-index='1' data-id='fenlei' bindtap='tap'>
+      <text>楼层编辑</text>
+    </view>
+    <view class='item acea-row row-center-wrapper {{1==navActive?"on":""}}' data-index='1' data-id='fenlei' bindtap='tap'>
+      <text>分销市场</text>
+    </view>
   <!-- <view class='item acea-row row-center-wrapper {{2==navActive?"on":""}}' data-index='2' data-id='chandi' bindtap='tap'>
       <text>产地馆</text>
     </view>

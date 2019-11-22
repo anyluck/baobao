@@ -25,7 +25,10 @@ Page({
       'class': '1',
       'color': true
     },
-    VipList: [],
+    nowid:1,
+    amount:0,
+    upTips:"请选择需要升级的等级",
+    VipList: [], 
     indicatorDots: false,
     circular: true,
     autoplay: false,
@@ -75,11 +78,15 @@ Page({
    */
   bindchange(e) {
     var index = e.detail.current
+    this.data.nowid = this.data.VipList[index].id
+
     this.setData({
+      
       swiperIndex: index,
       level_id: this.data.VipList[index].id || 0
     });
     this.getTask();
+    this.swipclick()
   },
   /**
    * 关闭说明
@@ -177,9 +184,50 @@ Page({
       return app.Tips({ title: err });
     });
   },
+  //升级会员
+  upgrade: function () {
+    console.log("upgrade")
+    var that=this
+
+    var id=that.data.nowid
+    var amount = that.data.amount
+
+    // wx.showModal({
+    //   title: '请确认升级信息',
+    //   content: '您需支付' + dis + "元升级",
+    //   success(res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //       that.upgrade(id, dis)
+
+    //     } else if (res.cancel) {
+    //       console.log('用户点击取消')
+    //     }
+    //   }
+    // })
+
+
+
+    if (parseFloat(wx.getStorageSync('now_money')) < parseFloat(amount)) return app.Tips({ title: '余额不足！' });
+    var d = {};
+    d.uid = wx.getStorageSync('uid')
+    d.mid = id
+    d.money = amount
+    setLevel(d).then(function (res) {
+      if (typeof (res) !== 'undefined') {
+        wx.showToast({
+          title: res.msg,
+        })
+      }
+    })
+
+
+
+  },
   swipclick: function (e) {
-    console.log(e)
-    var id = e.currentTarget.dataset.id
+    // console.log(e)
+    // var id = e.currentTarget.dataset.id
+    var id =this.data.nowid
     console.log("id", id)
     var that = this,
       data = {};
@@ -206,19 +254,43 @@ Page({
       return false;
     }
     //余额判断
+
+    let Oldamount = getUpAmoun(getApp().globalData.vip_id, this.data.VipList);
     let amount = getUpAmoun(id, this.data.VipList);
-    if (parseFloat(wx.getStorageSync('now_money')) < parseFloat(amount)) return app.Tips({ title: '余额不足！' });
-    var d = {};
-    d.uid = wx.getStorageSync('uid')
-    d.mid = id
-    d.money = amount
-    setLevel(d).then(function (res) {
-      if (typeof (res) !== 'undefined') {
-        wx.showToast({
-          title: res.msg,
-        })
-      }
+
+
+
+    console.log("Oldamount", Oldamount, amount)
+
+    Oldamount = parseInt(Oldamount)
+    amount = parseInt(amount)
+
+    var dis = amount - Oldamount
+
+
+    that.data.upTips="需支付"+dis+"元"
+
+
+    that.data.amount=dis
+
+
+    that.setData({
+      upTips: that.data.upTips
     })
+
+
+    
+
+
+    return
+
+
+    
+
+
+    
+
+
     //if (parseFloat(wx.getStorageSync('now_money')) < parseFloat(that.data.totalPrice)) return app.Tips({ title: '余额不足！' });
     //console.log(getApp().globalData.upAmount)
     /*wx.showLoading({

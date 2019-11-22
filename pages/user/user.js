@@ -16,7 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    vip_bg:"http://www.wanhuob.com/wxapp/images/vipbg_1.gif",
+    vip_bg:"http://wanhuob.com/wxapp/images/vipbg_1.gif",
     vip_id: 2,
     parameter: {
       'navbar': '1',
@@ -161,7 +161,7 @@ Page({
       getApp().globalData.spread_uid = res.data['spread_uid']
       //getApp().globalData.spread_uid = 140
       that.setData({
-        vip_bg: "http://www.wanhuob.com/wxapp/images/vipbg_" + res.data['vip_id'] + ".gif",
+        vip_bg: "http://wanhuob.com/wxapp/images/vipbg_" + res.data['vip_id'] + ".gif",
         vip_id: res.data['vip_id'],
         userInfo: res.data,
         xj: res.data.xj,
