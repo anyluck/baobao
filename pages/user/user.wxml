@@ -139,6 +139,12 @@
           </view>
           <view>浏览足迹</view>
         </button>
+        <button class='item'  hover-class='none' data-sign="helpcenter" bindtap='go'>
+          <view class='pictrue'>
+            <image src='/images/qh.png'></image>
+          </view>
+          <view>帮助中心</view>
+        </button>
 
         <!-- <button class='item' open-type="contact" hover-class='none'>
           <view class='pictrue'>

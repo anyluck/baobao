@@ -28,9 +28,9 @@
   <view class='wrapper'>
     <view class='title acea-row row-between-wrapper'>
       <view>
-        <text class='iconfont icon-jingyanzhi'></text>会员升级要求</view>
-      <view class='num'>
-        <text class='current'>{{reach_count || 0}}</text>/{{task.length || 0}}</view>
+        <text class='iconfont icon-jingyanzhi'></text>更多会员权益</view>
+      <!-- <view class='num'>
+        <text class='current'>{{reach_count || 0}}</text>/{{task.length || 0}}</view> -->
     </view>
     <view>
 

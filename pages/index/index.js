@@ -97,12 +97,12 @@ Page({
     //   // url: '../sales/fillinfo',
     // })
 
-    // wx.switchTab({
-    //   // url: '../sales/zhuce',
-    //   url: '../user/user',
-    // })
+    wx.switchTab({
+      // url: '../sales/zhuce',
+      url: '../user/user',
+    })
     setTimeout(() => {
-      that.getUserInfo()
+      that.getUserInfo() 
     }, 2000);
 
 
