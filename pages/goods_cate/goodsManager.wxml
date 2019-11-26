@@ -12,16 +12,16 @@
   </view>
 
   <view class='aside' style='top:{{navH}}rpx;margin-top:98rpx'>
-  <view class='item acea-row row-center-wrapper {{0==navActive?"on":""}}' data-index='0' data-id='fenxiao' bindtap='tap'>
+    <view class='item acea-row row-center-wrapper {{0==navActive?"on":""}}' data-index='0' data-id='fenxiao' bindtap='tap'>
       <text>我的分销</text>
     </view>
-    <view class='item acea-row row-center-wrapper {{1==navActive?"on":""}}' data-index='1' data-id='fenlei' bindtap='tap'>
+    <view class='item acea-row row-center-wrapper {{1==navActive?"on":""}}' data-index='1' data-id='floor' bindtap='tap'>
       <text>楼层编辑</text>
     </view>
-    <view class='item acea-row row-center-wrapper {{2==navActive?"on":""}}' data-index='2' data-id='fenlei' bindtap='tap'>
+    <view class='item acea-row row-center-wrapper {{2==navActive?"on":""}}' data-index='2' data-id='market' bindtap='tap'>
       <text>分销市场</text>
     </view>
-  <!-- <view class='item acea-row row-center-wrapper {{2==navActive?"on":""}}' data-index='2' data-id='chandi' bindtap='tap'>
+    <!-- <view class='item acea-row row-center-wrapper {{2==navActive?"on":""}}' data-index='2' data-id='chandi' bindtap='tap'>
       <text>产地馆</text>
     </view>
     <view class='item acea-row row-center-wrapper {{3==navActive?"on":""}}' data-index='3' data-id='techan' bindtap='tap'>
@@ -30,7 +30,7 @@
     <view class='item acea-row row-center-wrapper {{4==navActive?"on":""}}' data-index='4' data-id='shoucang' bindtap='tap'>
       <text>收藏</text>
     </view> -->
-    
+
 
     <!-- <block wx:for="{{productList}}" wx:for-item="item" wx:key>
       <view class='item acea-row row-center-wrapper {{index==navActive?"on":""}}' data-index='{{index}}' data-id='b{{index}}' bindtap='tap'>
@@ -40,11 +40,11 @@
     <!-- <view class='item acea-row row-center-wrapper {{5==navActive?"on":""}}' data-index='5' data-id='upload' bindtap='tap'>
       <text>上传商品</text>
     </view> -->
-   
+
   </view>
   <view class='conter'>
     <scroll-view scroll-y="true" scroll-into-view="{{toView}}" style='height:{{height}}rpx;' bindscroll="scroll" scroll-with-animation='true'>
-      <block wx:for="{{productList}}" wx:key>
+      <block wx:for="{{productList}}" wx:key wx:if="{{menuid==0}}">
         <view class='listw' id="b{{index}}">
           <view class='title acea-row row-center-wrapper'>
             <view class='line'></view>
@@ -63,6 +63,48 @@
           </view>
         </view>
       </block>
+
+
+      <block wx:for="{{FproductList}}" wx:key wx:if="{{menuid==1}}">
+        <view class='collectionGoods'>
+
+
+          <view class='text acea-row row-column-between' style="width:100%;height:100px;display: flex;flex-direction: row;">
+            <view class='pictrue' style="margin-right:10px;">
+              <image src='{{item.image}}' style="width:80px;height:80px;" mode="aspectFit"></image>
+            </view> 
+
+            <view style="width:60%;display: flex;flex-direction: column;">
+              <view class='line1' style="text-overflow:ellipsis;">{{item.store_name}}
+
+
+              </view>
+              <view class='money font-color'>分销价￥{{item.dprice}}</view>
+            </view>
+            <!-- <view class='delete' data-id='{{item.shopid}}' data-index='{{index}}' catchtap='delFoot'>删除</view> -->
+            <view class='acea-row row-between-wrapper' style="width:100%">
+
+
+            </view>
+          </view>
+ 
+          <view class='text acea-row row-column-between' style="width:100%;height:100px;display: flex;flex-direction: row;">
+
+            <button class="cu-btn round line-pink" data-fid="is_best" data-sid="{{item.id}}" bindtap="setFloor">热卖推荐</button>
+            <button class="cu-btn round line-pink" data-fid="is_new" data-sid="{{item.id}}" bindtap="setFloor">新品推荐</button>
+            <button class="cu-btn round line-pink" data-fid="is_benefit" data-sid="{{item.id}}" bindtap="setFloor">特价专场</button>
+          </view>
+
+
+
+
+          <!-- <view class='loadingicon acea-row row-center-wrapper'>
+            <text class='loading iconfont icon-jiazai' hidden='{{loading==false}}'></text>{{loadTitle}}
+          </view> -->
+        </view>
+      </block>
+
+
       <view style='height:{{height-300}}rpx;' wx:if='{{number<15}}'></view>
     </scroll-view>
   </view>

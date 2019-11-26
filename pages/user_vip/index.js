@@ -25,6 +25,12 @@ Page({
       'class': '1',
       'color': true
     },
+    payType: 'weixin',//支付方式
+    active: 0,//支付方式切换
+    cartArr: [
+      { "name": "微信支付", "icon": "icon-weixin2", value: 'weixin', title: '微信快捷支付' },
+      { "name": "余额支付", "icon": "icon-icon-test", value: 'yue', title: '可用余额:' }
+    ],
     nowid:1,
     amount:0,
     upTips:"请选择需要升级的等级",
@@ -60,6 +66,24 @@ Page({
         loading: true
       })
     }, 500)
+  },
+  payItem: function (e) {
+    var that = this;
+    var active = e.currentTarget.dataset.index;
+    that.setData({
+      active: active,
+      animated: true,
+      payType: that.data.cartArr[active].value,
+    })
+    setTimeout(function () {
+      that.car();
+    }, 500);
+  },
+  car: function () {
+    var that = this;
+    that.setData({
+      animated: false
+    });
   },
   /**
    * 获取我的推荐

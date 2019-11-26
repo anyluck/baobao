@@ -88,19 +88,19 @@ Page({
     //   // url: '../goods_cate/storeManager',
 
     //   // url: '../order_details/index?order_id=wx157387870883638033& isReturen=1'
-    //   url: '../order_details/processdetail?order_id=wx157387870883638033& isReturen=1'
+    //   // url: '../order_details/processdetail?order_id=wx157387870883638033& isReturen=1'
     //   // url: '../sales/feeback?id=wx157389184206036241'
     //   // url: '../goods_notices/index'
     //   // url:"../order_list/index"
-    //   // url:"../goods_cate/goodsManager",
+    //   url:"../goods_cate/goodsManager",
     //   // url: '../sales/ruzhu?shtype=快速商户',
     //   // url: '../sales/fillinfo',
     // })
 
-    wx.switchTab({
-      // url: '../sales/zhuce',
-      url: '../user/user',
-    })
+    // wx.switchTab({ 
+    //   // url: '../sales/zhuce',
+    //   url: '../user/user',
+    // })
     setTimeout(() => {
       that.getUserInfo() 
     }, 2000);
@@ -201,7 +201,9 @@ Page({
 
     }).catch((e) => {
       console.log("fail" ,JSON.stringify(e))
-      this.getUserInfo()
+      setTimeout(() => {
+        that.getUserInfo()
+      }, 2000);
      });;
   },
   /**

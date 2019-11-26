@@ -1,5 +1,5 @@
 import {
-  getCategoryListManage
+  getCategoryListManage, getMygoods, setFloor
 } from '../../api/store.js';
 import {
   setFormId
@@ -13,8 +13,10 @@ Page({
   data: {
     navlist: [],
     index: 1,
+    FproductList: [],//楼层商品
     productList: [],
     navActive: 0,
+    menuid:0,
     parameter: {
       'navbar': '1',
       'return': '0',
@@ -56,7 +58,7 @@ Page({
       },
     });
     var height = 0;
-    var hightArr = [];
+    var hightArr = []; 
     for (var i = 0; i < len; i++) { //productList
       //获取元素所在位置
       var query = wx.createSelectorQuery().in(this);
@@ -75,7 +77,16 @@ Page({
     var that = this
     var id = e.currentTarget.dataset.id;
     that.index = e.currentTarget.dataset.index;
-    console.log(that.index, id);
+    that.data.menuid = that.index
+    console.log(that.index, id,that.data.menuid);
+
+
+    //上传商品
+    if (that.index == 1) {
+      that.getMygoods()
+      
+
+    };
 
     //上传商品
     if (that.index == 5) {
@@ -86,10 +97,79 @@ Page({
     };
 
     this.setData({
+      menuid: that.index,
       toView: id,
       index: that.index,
       navActive: that.index
     });
+
+  },
+  setFloor: function (e) {
+    var that = this;
+    
+    var fid = e.currentTarget.dataset.fid;
+    var sid = e.currentTarget.dataset.sid;
+    console.log("setFloor",fid,sid);
+
+    
+
+    var o = {}
+    o.id=sid
+
+    if(fid =="is_benefit"){      
+      o.is_benefit=1
+      o.is_best = 0
+      o.is_new = 0
+    }
+    if (fid == "is_best") {
+      o.is_benefit = 0
+      o.is_best = 1
+      o.is_new = 0
+    }
+    if (fid == "is_new") {
+      o.is_benefit = 0
+      o.is_best = 0
+      o.is_new = 1
+    }
+    // o.is_benefit=
+    
+    setFloor(
+      o
+    ).then(res => {
+      console.log("setFloor", res);
+
+      // that.data.FproductList = res.data.list.data
+      // that.setData({
+      //   FproductList: that.data.FproductList
+      // })
+
+
+    })
+
+
+  },
+  getMygoods: function () {
+    var that = this;
+    console.log("getMygoods");
+    var value={page:1}
+    var pageNum=1
+
+    console.log("pageNum", pageNum);
+
+    value["page"] = pageNum
+    getMygoods(
+      value
+      ).then(res => {
+        console.log("getMygoods",res,res.data.list.data);
+
+        that.data.FproductList = res.data.list.data
+        that.setData({
+          FproductList: that.data.FproductList
+        })
+
+      
+    })
+
 
   },
   getAllCategory: function() {

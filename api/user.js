@@ -29,6 +29,16 @@ export function add_sale(data) {
 
 
 /**
+ * 联系客服
+ *
+ */
+export function gocontact(data) {
+  return request.post('shop/contact_customer', data);
+}
+
+
+
+/**
  * 获取用户中心菜单
  *
  */
@@ -99,7 +109,7 @@ export function userLevelDetection(){
 }
 
 /**
- * 获取分销海报图片
+ * 获取分销海报图片 
  *
 */
 export function spreadBanner(){

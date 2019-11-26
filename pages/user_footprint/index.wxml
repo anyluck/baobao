@@ -1,15 +1,17 @@
 <navbar parameter='{{parameter}}'></navbar>
 <view class='collectionGoods' wx:if="{{collectProductList.length}}">
-  <navigator url='/pages/goods_details/index?id={{item.pid}}' hover-class='none' class='item acea-row row-between-wrapper' wx:for="{{collectProductList}}">
+  <navigator url='/pages/goods_details/index?id={{item.shopid}}' hover-class='none' class='item acea-row row-between-wrapper' wx:for="{{collectProductList}}"> 
     <view class='pictrue'>
       <image src='{{item.image}}'></image>
     </view>
-    <view class='text acea-row row-column-between' style="width:100%;height:100px">
-      <view class='line1'>{{item.store_name}}</view>
-      <!-- <view class='acea-row row-between-wrapper'  style="width:100%">
-        <view class='money font-color'>￥{{item.price}}</view>
-        <view class='delete' data-id='{{item.pid}}' data-index='{{index}}' catchtap='delCollection'>删除</view>
-      </view> -->
+    <view class='text acea-row row-column-between' style="width:100%;height:100px;display: flex;flex-direction: row;">
+    
+      <view class='line1' style="text-overflow:ellipsis;width:60%;">{{item.store_name}}</view>
+      <view class='delete' data-id='{{item.shopid}}' data-index='{{index}}' catchtap='delFoot'>删除</view>
+      <view class='acea-row row-between-wrapper'  style="width:100%">
+        <!-- <view class='money font-color'>￥{{item.price}}</view> -->
+        
+      </view>
     </view>
   </navigator>
   <view class='loadingicon acea-row row-center-wrapper'>

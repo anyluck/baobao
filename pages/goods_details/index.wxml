@@ -6,15 +6,18 @@
       <view class='money font-color'>
         ￥
         <text class='num'>{{storeInfo.price}}</text>
-        <text class='vip-money' wx:if="{{storeInfo.vip_price && storeInfo.vip_price > 0}}">￥{{storeInfo.vip_price}}</text>
+        <!-- <text class='vip-money' wx:if="{{storeInfo.vip_price && storeInfo.vip_price > 0}}">￥{{storeInfo.vip_price}}</text> -->
         <image wx:if="{{storeInfo.vip_price && storeInfo.vip_price > 0}}" src="/images/vip.png"></image>
       </view>
       <view class='iconfont icon-fenxiang' bindtap='listenerActionSheet'></view>
     </view>
     <view class='introduce'>{{storeInfo.store_name}}</view>
     <view class='label acea-row row-between-wrapper' wx:if="{{vip_id>1}}">
-      <view>分销价:￥{{storeInfo.ot_price}}</view>
-      <input bindinput='bindinput2' placeholder="设置分销价：元" placeholder-style="border:1px;border-radius: 5px; border-width:1px;border-color: gray;border-style: solid; ">元</input>
+      <view>分销价:￥{{storeInfo.price}}</view>
+      <view style="border:1px;border-radius:5px; border-width:1px;border-color: gray;border-style: solid;width:100px">
+      <input bindinput='bindinput2' placeholder="设置分销价：元" placeholder-style="height:15px;margin-bottom:1px ">元</input>
+      </view>
+      <button type="normal"  style="font-size:15px" data-id="{{storeInfo.id}}" bindtap="setPrice">[修改]</button>
 
 
     </view>
@@ -29,13 +32,13 @@
         <view class='activity'>赠送 {{storeInfo.give_integral}} 积分</view>
       </view>
     </view>
-    <view class='coupon acea-row row-between-wrapper' bindtap='coupon' style="{{ storeInfo.give_integral > 0 ? 'margin-top:0;':''}}">
+    <!-- <view class='coupon acea-row row-between-wrapper' bindtap='coupon' style="{{ storeInfo.give_integral > 0 ? 'margin-top:0;':''}}">
       <view class='hide line1 acea-row'>
         优惠券：
         <view class='activity' wx:for="{{couponList}}" wx:key>满{{item.use_min_price}}减{{item.coupon_price}}</view>
       </view>
       <view class='iconfont icon-jiantou'></view>
-    </view>
+    </view> -->
   </view>
   <view class='attribute acea-row row-between-wrapper' bindtap='selecAttr'>
     <view>{{attr}}：
@@ -61,7 +64,7 @@
   </view>
   <view style='height:120rpx;'></view>
   <view class='footer acea-row row-between-wrapper'>
-    <button open-type="contact" hover-class='none' class='item'>
+    <button  hover-class='none' class='item'  data-sign="contact"   bindtap='go'>
       <view class='iconfont icon-kefu'></view>
       <view>客服</view>
     </button>
@@ -80,6 +83,7 @@
       <form bindsubmit="goBuy" report-submit='true'>
         <button class='joinCart bnts' formType="submit">会员购买</button>
       </form>
+      <!-- 立即上架 -->
       <form bindsubmit="goDistribution" report-submit='true'>
         <button class='buy bnts' formType="submit">{{mytext}}</button>
       </form>
@@ -102,7 +106,8 @@
           </form>
         </view> -->
   </view>
-  <shareRedPackets sharePacket="{{sharePacket}}" bind:listenerActionSheet="listenerActionSheet"></shareRedPackets>
+  <!-- 分享卡片浮动 -->
+  <!-- <shareRedPackets sharePacket="{{sharePacket}}" bind:listenerActionSheet="listenerActionSheet"></shareRedPackets> -->
 </view>
 <!-- 分享按钮 -->
 <action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" class='pro-wrapper' hover-class='none'>

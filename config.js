@@ -2,7 +2,7 @@ module.exports = {
   // 请求域名
   // HTTP_REQUEST_URL:'http://demo4.wanhuob.com/index.php',
   // HTTP_REQUEST_URL: 'http://demo4.wanhuob.com',
-  HTTP_REQUEST_URL: 'https://demo4.wanhuob.com',
+  HTTP_REQUEST_URL: 'https://demo4.wanhuob.com/',
   // HTTP_REQUEST_URL: 'https://demo.wanhuob.com/index.php',
   // Socket链接
   WS_SERVER_URL:'',

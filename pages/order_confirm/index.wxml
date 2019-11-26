@@ -19,7 +19,7 @@
   </view>
   <orderGoods cartInfo="{{cartInfo}}"></orderGoods>
   <view class='wrapper'>
-    <view class='item acea-row row-between-wrapper' bindtap='coupon' wx:if="{{!pinkId && !BargainId && !combinationId && !seckillId}}">
+    <!-- <view class='item acea-row row-between-wrapper' bindtap='coupon' wx:if="{{!pinkId && !BargainId && !combinationId && !seckillId}}">
       <view>优惠券</view>
       <view class='discount'>{{couponTitle}}
         <text class='iconfont icon-jiantou'></text>
@@ -38,8 +38,8 @@
     </view>
     <view class='item acea-row row-between-wrapper' wx:if="{{priceGroup.vipPrice > 0 && userInfo.vip && !pinkId && !BargainId && !combinationId && !seckillId}}">
       <view>会员优惠</view>
-      <view class='discount' >￥{{priceGroup.vipPrice}}</view>
-    </view>
+      <view class='discount'>￥{{priceGroup.vipPrice}}</view>
+    </view> -->
     <view class='item acea-row row-between-wrapper'>
       <view>快递费用</view>
       <view class='discount' wx:if='{{priceGroup.storePostage > 0}}'>{{priceGroup.storePostage}}</view>
@@ -52,7 +52,7 @@
   </view>
   <view class='wrapper'>
     <view class='item'>
-      <view>支付方式</view>
+      <view>支付方式</view> 
       <view class='list'>
         <view class='payItem acea-row row-middle {{active==index ?"on":""}}' data-index='{{index}}' bindtap='payItem' wx:for="{{cartArr}}" wx:key>
           <view class='name acea-row row-center-wrapper'>

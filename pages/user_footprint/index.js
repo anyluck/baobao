@@ -1,6 +1,6 @@
 // pages/collectionGoods/index.js
 
-import { getCollectUserList, getProductHot, collectDel, getfootprint} from '../../api/store.js';
+import { getCollectUserList, getProductHot, collectDel, getfootprint, delFoot} from '../../api/store.js';
 
 
 const app=getApp();
@@ -62,12 +62,14 @@ Page({
     });
   },
   /**
-   * 取消收藏
+   * 删除足迹
   */
-  delCollection:function(e){
+  delFoot:function(e){
+    // 应该是删除足迹
+    // return
     var id = e.target.dataset.id, that = this, index = e.target.dataset.index;
-    collectDel(id).then(res=>{
-      return app.Tips({ title: '取消收藏成功', icon: 'success' }, function () {
+    delFoot(id).then(res=>{
+      return app.Tips({ title: '删除足迹成功', icon: 'success' }, function () {
         that.data.collectProductList.splice(index, 1);
         that.setData({ collectProductList: that.data.collectProductList });
       });

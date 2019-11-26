@@ -44,6 +44,23 @@
         </view>
 
       </view>
+
+      <view class='order-submission'>
+
+        <view class='wrapper'>
+          <view class='item'>
+            <view>支付方式</view>
+            <view class='list'>
+              <view class='payItem acea-row row-middle {{active==index ?"on":""}}' data-index='{{index}}' bindtap='payItem' wx:for="{{cartArr}}" wx:key>
+                <view class='name acea-row row-center-wrapper'>
+                  <view class='iconfont {{item.icon}} animated {{animated==true&&active==index ?"bounceIn":""}}'></view>{{item.name}}</view>
+                <view class='tip'>{{item.title}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
       <button type="primary" style="width:100%;margin-top:20px" bindtap='upgrade'>我要升级</button>
     </view>
     <!-- <view class='list'>

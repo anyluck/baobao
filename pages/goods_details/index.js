@@ -1,12 +1,15 @@
-import { getProductDetail, getProductCode, collectAdd, collectDel, postCartAdd, addDistributionProduct, DropDistributionProduct} from '../../api/store.js';
+import { getProductDetail, getProductCode, collectAdd, collectDel, postCartAdd, addDistributionProduct, setPrice, DropDistributionProduct} from '../../api/store.js';
 import { getCoupons ,setFormId} from '../../api/api.js';
 import { getCartCounts } from '../../api/order.js';
-import { getUserInfo, userShare } from '../../api/user.js';
+import { getUserInfo, userShare, gocontact } from '../../api/user.js';
 import { addPageView } from '../../api/store.js';
 import wxh from '../../utils/wxh.js';
 import util from '../../utils/util.js';
 import WxParse from '../../wxParse/wxParse.js';
 
+
+
+ 
 const app = getApp();
 
 var inputValue = ""
@@ -49,7 +52,7 @@ Page({
     iShidden:true,//是否隐藏授权
     isOpen:false,//是否打开属性组件
     isLog:app.globalData.isLog,//是否登录
-    actionSheetHidden:true,
+    actionSheetHidden:true,//分享按钮
     posterImageStatus:false,
     storeImage: '',//海报产品图
     PromotionCode: '',//二维码图片
@@ -60,6 +63,77 @@ Page({
       isState:true,//默认不显示
     },//分销商详细
     uid:0,//用户uid
+  },
+
+
+
+  showcontact: function (str) {
+    var that = this;
+    console.log("showcontact")
+
+    wx.showModal({
+      title: '请联系客服',
+      content: str,
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    }) 
+
+
+ 
+  },
+
+
+  gocontact: function () {
+    var that = this;
+    console.log("gocontact")
+
+    var o = {}
+    o.uid = wx.getStorageSync('uid')
+
+
+    gocontact(
+      o
+    ).then(res => {
+      console.log("gocontact", res);
+      var wx = res.data.lianx_wx
+      var phone = res.data.lianxi_phone
+
+      var str = '客服微信：' + wx + "\n客服电话：" + phone
+
+      that.showcontact(str)
+
+
+
+
+
+      // that.data.FproductList = res.data.list.data
+      // that.setData({
+      //   FproductList: that.data.FproductList
+      // })
+
+
+    })
+
+
+
+
+  },
+
+
+  go: function (e) {
+    var that = this;
+    var sign = e.currentTarget.dataset.sign
+    console.log("sign", sign)
+    if (sign == "contact") {
+      that.gocontact()
+    }
+
+
   },
   /**
    * 登录后加载
@@ -605,6 +679,41 @@ Page({
       imageUrl: that.data.productSelect.image || '',
       path: '/pages/goods_details/index?id=' + that.data.id + '&spid='+that.data.uid,
     }
+  },
+  setPrice: function (e) {
+    var data = {};
+    var that = this
+
+    var id = e.currentTarget.dataset.id;
+    // data.uid = wx.getStorageSync("uid");
+    // that.pid = storeInfo.id
+    // that.cateid = storeInfo.cate_id
+
+    data.id = id;
+    data.price = inputValue
+    if (inputValue == "") {
+      wx.showToast({
+        title: '请输入分销价',
+      })
+      return
+    }
+    setPrice(data).then(function (res) {
+      console.log("setPrice", res)
+      // wx.showToast({
+      //   title: res.msg,
+      // })
+    }).catch(err => {
+      //状态异常返回上级页面
+      wx.showToast({
+        title: err,
+        icon: "none"
+      })
+      // return app.Tips({ title: err }, { tab: 3, url: 1 });
+    })
+
+
+
+
   },
   goDistribution: function(){
     var data = {};

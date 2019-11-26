@@ -1,5 +1,6 @@
 // pages/sales/feeback.js
 import { getChange } from '../../api/order.js';
+import { delhuoyuan } from '../../api/store.js';
 Page({
 
   /**
@@ -49,6 +50,43 @@ Page({
 
 
   },
+  /**
+   * 删除通知
+  */
+  delNotice: function (e) {
+    var that=this
+    
+    // return
+    
+    var sid = e.currentTarget.dataset.sid;
+    var index = e.currentTarget.dataset.index;
+    console.log("delNotice", index, sid);
+
+
+    var o={}
+    o.id=sid
+
+    console.log("o", o);
+
+    that.data.changeList.splice(index, 1);
+    that.setData({ changeList: that.data.changeList });
+
+    return
+
+    delhuoyuan(o).then(res => {
+
+      wx.showToast({
+        title: '删除成功',
+      })
+      that.data.changeList.splice(index, 1);
+      that.setData({ changeList: that.data.changeList });
+      // return app.Tips({ title: '删除通知成功', icon: 'success' }, function () {
+        
+      // });
+    });
+  },
+
+
   PickerChange(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({

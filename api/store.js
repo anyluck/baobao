@@ -5,6 +5,48 @@ import request from "./../utils/request.js";
  *
  */
 
+
+/**
+ * 删除上架商品
+ *
+ */
+export function delmygood(data) {
+  return request.post("shop/del_louchens", data);
+}
+
+/**
+ * 删除货源通知
+ *
+ */
+export function delhuoyuan(data) {
+  return request.post("shop/del_louchen", data);
+}
+
+
+
+
+/**
+ * 获取分销商品
+ *
+ */
+export function getMygoods(data) {
+  return request.post("shop/louchen", data);
+}
+
+
+
+
+/**
+ * 设置商品楼层
+ *
+ */
+export function setFloor(data) {
+  return request.post("shop/louchen_status", data);
+}
+
+
+
+
 /**
  * 获取推荐产品
  *
@@ -49,6 +91,16 @@ export function getCollectUserList(data) {
  */
 export function collectAll(id, category) {
   return request.post('collect/all', { id: id, category: category === undefined ? 'product' : category });
+}
+
+// 
+/**
+ * 删除足迹
+ * @param int id
+ * @param string category product=普通产品,product_seckill=秒杀产品
+ */
+export function delFoot(id) {
+  return request.post('del_footprints', { shopid: id });
 }
 
 /**
@@ -147,6 +199,18 @@ export function getGroomList(type){
 export function getSearchKeyword(){
   return request.get('search/keyword',{},{noAuth:true});
 }
+
+
+
+
+/*
+ * 修改价格
+ * */
+export function setPrice(data) {
+  return request.post("shop/exhibit_change", data);
+}
+
+
 /*
  * 加盟
  * */

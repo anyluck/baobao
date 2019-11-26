@@ -115,12 +115,19 @@
             <image src='{{item.pic}}'></image>
           </view>
           <view>{{item.name}}</view>
-        </view>
+        </view> 
         <!-- <button class='item' bindtap="gotuiguang"  hover-class='none'>
               <view class='pictrue'><image src='/images/customer.png'></image></view>
               <view>加入推广员</view>
             </button> -->
-        <button class='item' open-type="contact" hover-class='none'>
+            <button class='item'  hover-class='none'  data-sign="like" bindtap='go'>
+          <view class='pictrue'>
+            <image src='http://datong.crmeb.net/public/uploads/attach/2019/03/28/5c9ccc99269d1.png'></image>
+          </view>
+          <view>我的收藏</view>
+        </button>
+
+        <button class='item'  hover-class='none' data-sign="contact"   bindtap='go'>
           <view class='pictrue'>
             <image src='/images/customer.png'></image>
           </view>

@@ -2,7 +2,8 @@ const app = getApp();
 
 import {
   getMenuList,
-  getUserInfo
+  getUserInfo,
+  gocontact
 } from '../../api/user.js';
 import {
   switchH5Login
@@ -63,6 +64,63 @@ Page({
 
   },
 
+  showcontact: function (str) {
+    var that = this;
+    console.log("showcontact")
+
+    wx.showModal({
+      title: '请联系客服',
+      content: str,
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+
+
+  },
+
+
+  gocontact: function () {
+    var that = this;
+    console.log("gocontact")
+
+    var o={}
+    o.uid = wx.getStorageSync('uid')
+
+
+    gocontact(
+      o
+    ).then(res => {
+      console.log("gocontact", res);
+      var wx = res.data.lianx_wx
+      var phone = res.data.lianxi_phone
+
+      var str = '客服微信：' + wx + "\n客服电话：" + phone
+
+      that.showcontact(str)
+
+      
+
+      
+
+      // that.data.FproductList = res.data.list.data
+      // that.setData({
+      //   FproductList: that.data.FproductList
+      // })
+
+
+    })
+
+
+
+
+  },
+
   /**
    *
    * 获取个人中心图标
@@ -71,6 +129,18 @@ Page({
     var that = this;
     var sign=e.currentTarget.dataset.sign
     console.log("sign",sign)
+
+      
+    if (sign == "like") {
+      wx.navigateTo({
+        url: '../user_goods_collection/index',
+      })
+    }
+
+    if (sign == "contact") {
+      that.gocontact()
+    }
+
     if (sign == "footprint") {
       wx.navigateTo({
         url: '../user_footprint/index',

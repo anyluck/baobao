@@ -4,33 +4,42 @@
 
 <view style="background-color: white;height:110vh;margin-top:-30px">
 
-<view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;height:10px " bindtap="back"> </view>
-<view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px; " bindtap="back">＜</view>
+  <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;height:10px " bindtap="back"> </view>
+  <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px; " bindtap="back">＜</view>
 
 
   <view class="cu-form-group" style="">
     <view class='listn'>
-      <block wx:for="{{changeList}}" wx:for-item="child" wx:key style="margin-bottom:10px">
-        <view class='itenm'>
-          <view class='top acea-row row-between-wrapper'>
-            <view class='pictxt acea-row row-between-wrapper'>
-              <!-- <view class='pictrue'><image src='{{child.avatar}}'></image></view> -->
-              <view class='text line1' style="font-size:20px;font-weight:bolder">{{child.shopname}}</view>
-            </view>
+      <block wx:for="{{changeList}}" wx:for-item="item" wx:key style="margin-bottom:10px">
+        <navigator url='/pages/goods_details/index?id={{item.shopid}}' hover-class='none' class='item acea-row row-between-wrapper'>
+          <view class='itenm'>
+            <view class='top acea-row row-between-wrapper'>
+              <view class='pictxt acea-row row-between-wrapper'>
+                <view class='pictrue'>
+                  <image src='{{item.image}}' style="width:80px;height:80px;margin-right:10px" mode="aspectFit"></image>
+                </view>
+                <view class='text line1' style="font-size:20px;font-weight:bolder">{{item.shopname}}</view>
+              </view>
 
-          </view>
-          <view class='bottom' style="margin-bottom:30px;">
-            <view class='money'>价格调整：
-              <text class='font-color'>￥{{child.now_price}}</text>
             </view>
-            <view>
-              <text class='name'>原分销价：</text>{{child.yuan_price}}</view>
-            <view>
-              <text class='name'>调整时间：</text>{{child.addtimes}}</view>
-            <view>
-              <text class='name'>调整tips：</text>{{child.text}}</view>
+            <view class='bottom' style="margin-bottom:30px;">
+              <view class='money'>价格调整：
+                <text class='font-color'>￥{{item.now_price}}</text>
+              </view>
+              <view>
+                <text class='name'>原分销价：</text>{{item.yuan_price}}</view>
+              <view>
+                <text class='name'>调整时间：</text>{{item.addtimes}}</view>
+              <view>
+                <text class='name'>调整tips：</text>{{item.text}}</view>
+            </view>
+ 
           </view>
+        </navigator>
+        <view class='text acea-row row-column-between' style="width:100%;height:100px;display: flex;flex-direction: row;">
+          <button class="cu-btn round line-pink" style="position: absolute;right:5%"  data-index='{{index}}' data-sid="{{item.id}}" bindtap="delNotice">删除</button>
         </view>
+
       </block>
     </view>
 
