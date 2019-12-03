@@ -3,7 +3,7 @@ import {
   getProductHot,
 } from '../../api/store.js';
 
-
+ 
 const app = getApp();
 Page({
 
@@ -15,9 +15,7 @@ Page({
     parameter: {
       'navbar': '1',
       'return': '1',
-      'title': '商品列表',
-      'color': true,
-      'class': '0'
+      'title': '商品列表'
     },
     navH: "",
     is_switch: true,

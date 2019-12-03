@@ -1,5 +1,5 @@
 <navbar parameter='{{parameter}}'></navbar>
-<view class='product-con'>
+<view class='product-con'> 
   <productConSwiper imgUrls="{{storeInfo.slider_image}}"></productConSwiper>
   <view class='wrapper'>
     <view class='share acea-row row-between row-bottom'>

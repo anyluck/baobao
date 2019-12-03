@@ -10,12 +10,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // parameter: {
+    //   'navbar': '1',
+    //   'return': '1',
+    //   'title': '我的推广',
+    //   'color': true,
+    //   'class': '0'
+    // },
     parameter: {
       'navbar': '1',
       'return': '1',
-      'title': '我的推广',
-      'color': true,
-      'class': '0'
+      'title': '推广赚钱'
     },
     userInfo:[],
     yesterdayPrice:0.00,

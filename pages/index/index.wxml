@@ -112,7 +112,7 @@
                   </swiper-item>
                 </block>
             </swiper>
-       </view>
+       </view> 
        <goodList bastList="{{bastList}}"></goodList>
     </view>
     <view class='hotList' wx:if="{{likeInfo.length}}">

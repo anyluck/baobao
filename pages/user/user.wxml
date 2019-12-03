@@ -133,7 +133,7 @@
           </view>
           <view>联系客服</view>
         </button>
-        <button class='item'  hover-class='none' bindtap='goNotices'>
+        <button class='item'  hover-class='none' bindtap='goNotices' wx:if="{{vip_id>1}}">
           <view class='pictrue'>
             <image src='/images/balance.png'></image>
           </view>

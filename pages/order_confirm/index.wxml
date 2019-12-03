@@ -8,7 +8,7 @@
       <view class='name'>{{addressInfo.real_name}}
         <text class='phone'>{{addressInfo.phone}}</text>
       </view>
-      <view>
+      <view> 
         <text class='default font-color' wx:if="{{addressInfo.is_default}}">[默认]</text>{{addressInfo.province}}{{addressInfo.city}}{{addressInfo.district}}{{addressInfo.detail}}</view>
       <!-- <view class='setaddress'>设置收货地址</view> -->
     </view>
@@ -67,10 +67,10 @@
       <view>商品总价：</view>
       <view class='money'>￥{{priceGroup.totalPrice}}</view>
     </view>
-    <view class='item acea-row row-between-wrapper' wx:if="{{priceGroup.vipPrice > 0 && userInfo.vip && !pinkId && !BargainId && !combinationId && !seckillId}}">
+    <!-- <view class='item acea-row row-between-wrapper' wx:if="{{priceGroup.vipPrice > 0 && userInfo.vip && !pinkId && !BargainId && !combinationId && !seckillId}}">
       <view>会员优惠金额：</view>
       <view class='money'>-￥{{priceGroup.vipPrice}}</view>
-    </view>
+    </view> -->
     <view class='item acea-row row-between-wrapper' wx:if="{{coupon_price > 0}}">
       <view>优惠券抵扣：</view>
       <view class='money'>-￥{{coupon_price}}</view>
@@ -80,7 +80,7 @@
       <view class='money'>-￥{{integral_price}}</view>
     </view>
     <view class='item acea-row row-between-wrapper'>
-      <view>运费：</view>
+      <view>运费：</view> 
       <view class='money'>￥{{priceGroup.storePostage}}</view>
     </view>
   </view>

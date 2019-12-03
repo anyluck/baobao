@@ -9,6 +9,11 @@ Page({
   data: {
     index: -1,
     picker: ['质量问题', '配件问题', '少件/漏发', '与商品描述不符', '少件/漏发', '包装/商品残破', '发票问题', '其它'],
+    parameter: {
+      'navbar': '1',
+      'return': '1',
+      'title': '货源变更'
+    },
     changeList:[]
 
   },

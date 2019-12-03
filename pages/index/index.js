@@ -56,13 +56,17 @@ Page({
     switchActive: false,
     loginType: app.globalData.loginType,
   },
-
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var that=this
+
+
+    // return
+
     if (options.spid) app.globalData.spid = options.spid;
     if (options.scene) app.globalData.code = decodeURIComponent(options.scene);
     
@@ -96,7 +100,7 @@ Page({
     //   // url: '../sales/ruzhu?shtype=快速商户',
     //   // url: '../sales/fillinfo',
     // })
-
+ 
     // wx.switchTab({ 
     //   // url: '../sales/zhuce',
     //   url: '../user/user',
@@ -166,13 +170,13 @@ Page({
       that.data.parameter.dian_name = res.data.dian_name
 
 
-
+ 
 
 
 
       wx.setStorageSync('uid', res.data.uid)
       wx.setStorageSync('now_money', res.data.now_money)
-      console.log("aa" + res.data['vip_id'])
+      console.log("aa" + res.data['vip_id'], res.data.spread_uid)
       getApp().globalData.vip_id = res.data['vip_id']
       getApp().globalData.spread_uid = res.data['spread_uid']
       //getApp().globalData.spread_uid = 140
@@ -239,7 +243,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+    // return
     
     if (app.globalData.isLog && app.globalData.token) this.get_issue_coupon_list();
     

@@ -27,9 +27,7 @@ Page({
     parameter: {
       'navbar': '1',
       'return': '1',
-      'title': '店铺设置',
-      'color': true,
-      'class': '0'
+      'title': '店铺设置'
     },
     userInfo: {},
     loginType: 'h5', //app.globalData.loginType

@@ -1,11 +1,11 @@
 <!--pages/sales/feeback.wxml-->
+<navbar parameter='{{parameter}}'></navbar>
 
 
+<view style="background-color: white;height:100vh;margin-top:0px">
 
-<view style="background-color: white;height:110vh;margin-top:-30px">
-
-  <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;height:10px " bindtap="back"> </view>
-  <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px; " bindtap="back">＜</view>
+  <!-- <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px;height:10px " bindtap="back"> </view>
+  <view style="margin-top:30px;font-size:25px;font-weight:bold;margin-bottom:30px;margin-left:10px; " bindtap="back">＜</view> -->
 
 
   <view class="cu-form-group" style="">

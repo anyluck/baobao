@@ -2,7 +2,7 @@ import {
   getCategoryList
 } from '../../api/store.js';
 import {
-  setFormId
+  setFormId 
 } from '../../api/api.js';
 import {
   getBrandList
@@ -20,7 +20,7 @@ Page({
     parameter: {
       'navbar': '1',
       'return': '0',
-      'title': '产品分类'
+      'title': '分类'
     },
     navH: "",
     number: ""
@@ -34,6 +34,25 @@ Page({
     that.setData({
       vip_id: that.vip_id
     })
+
+    if (that.vip_id==1){
+      // wx.showToast({
+      //   title: '会员专区',
+      // })
+
+
+      //跳转
+      // setTimeout(function () {
+      //   wx.switchTab({
+      //     url: '../index/index',
+      //   })
+      //   return
+      // }.bind(this), 2000)
+
+
+
+      
+    }
     console.log("that.vip_id", that.vip_id)
 
     this.getAllCategory();

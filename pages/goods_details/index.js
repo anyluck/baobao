@@ -24,7 +24,7 @@ Page({
     dprice:0,
     pid:0,
     cateid:0,
-    vip_id:1,
+    vip_id:1, 
     mytext:'立即上架',
     parameter: {
       'navbar': '1',
@@ -514,9 +514,27 @@ Page({
   },
   /**
    * 立即购买
-   */
+   */ 
   goBuy:function(e){
     var that = this,formId = e.detail.formId;
+
+    //&&spread_uid==0
+    if (getApp().globalData.vip_id == 1 && getApp().globalData.spread_uid==0){
+      wx.showToast({ 
+        title: '请升级会员后操作',
+      })
+
+
+      wx.navigateTo({
+        url: '../user_vip/index',
+      })
+
+
+      return
+    }
+
+
+
     if (app.globalData.isLog === false)
       this.setData({ isAuto: true, iShidden: false });
     else{

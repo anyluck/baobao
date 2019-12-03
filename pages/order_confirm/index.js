@@ -28,7 +28,7 @@ Page({
     coupon: { coupon: false, list: [], statusTile:'立即使用'},//优惠券组件
     address: {address: false},//地址组件
     addressInfo:{},//地址信息
-    pinkId:0,//拼团id
+    pinkId:0,//拼团id 
     addressId:0,//地址id
     couponId:0,//优惠券id
     cartId:'',//购物车id
@@ -249,7 +249,16 @@ Page({
   */
   getConfirm:function(){
     var that=this;
+    
     orderConfirm(this.data.cartId).then(res=>{
+      console.log("orderConfirm", res.data)
+      //修改价格
+      res.data.priceGroup.totalPrice = parseFloat(res.data.priceGroup.totalPrice) + parseFloat(res.data.priceGroup.vipPrice)
+
+      that.data.totalPrice = res.data.priceGroup.totalPrice
+
+      console.log("that.data.totalPrice", that.data.totalPrice)
+
       that.setData({
         userInfo: res.data.userInfo,
         integral: res.data.userInfo.integral,
@@ -347,7 +356,9 @@ Page({
     });
   },
   SubOrder:function(e){
-    console.log(e)
+    var that=this
+    console.log("SubOrder",e)
+    console.log("SubOrder.totalPrice", that.data.totalPrice)
     var formId = e.detail.formId, that = this, data={};
     if (!this.data.payType) return app.Tips({title:'请选择支付方式'});
     if (!this.data.addressId) return app.Tips({ title:'请选择收货地址'});
@@ -370,6 +381,8 @@ Page({
     orderCreate(this.data.orderKey ,data).then(res=>{
       var status = res.data.status, orderId = res.data.result.orderId, jsConfig = res.data.result.jsConfig,
         goPages = '/pages/order_pay_status/index?order_id=' + orderId + '&msg=' + res.msg;
+
+      console.log("SubOrder3",res.data);
       switch (status) {
         case 'ORDER_EXIST': case 'EXTEND_ORDER': case 'PAY_ERROR':
           wx.hideLoading();

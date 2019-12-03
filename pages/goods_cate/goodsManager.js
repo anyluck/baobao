@@ -19,7 +19,7 @@ Page({
     menuid:0,
     parameter: {
       'navbar': '1',
-      'return': '0',
+      'return': '1',//有没有返回键和标题
       'title': '商品管理'
     },
     navH: "",
